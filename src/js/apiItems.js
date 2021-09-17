@@ -16,8 +16,6 @@ async function fetchTrendsGallery(e) {
     const movies = await fetchTrends(1);
     console.log(movies);
     renderGallery(movies);
-
-    // console.log(movies);
   } catch (error) {
     console.error(error);
   }
