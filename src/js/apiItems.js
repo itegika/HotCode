@@ -16,8 +16,6 @@ async function fetchTrendsGallery(e) {
     const movies = await fetchTrends(1);
     console.log(movies);
     renderGallery(movies);
-
-    // console.log(movies);
   } catch (error) {
     console.error(error);
   }
@@ -35,7 +33,7 @@ async function fetchGenres() {
 }
 fetchGenres();
 
-async function fetchById(movie_id) {
+export async function fetchById(movie_id) {
   try {
     const result = await axios.get(`${URL}/movie/${movie_id}?api_key=${KEY}`);
     console.log(result.data);
