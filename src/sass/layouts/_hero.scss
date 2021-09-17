@@ -1,11 +1,21 @@
 .search-form {
-  background-color: black;
   display: flex;
   position: relative;
   width: 280px;
   margin: 0 auto 22px;
   justify-content: center;
 }
+.search-svg {
+  background-color: transparent;
+  // color: aqua;
+  // fill: magenta;
+  width: 20px;
+  height: 32px;
+  stroke: rgb(154, 160, 160);
+}
+// .search-svg-use {
+//   fill: magenta;
+// }
 .search-input {
   width: 280px;
   height: 30px;
@@ -17,7 +27,7 @@
   border-bottom: 0.5px solid color #fff;
   outline: none;
 
-  background-color: transparent;
+  background-color: inherit;
 
   color: #fff;
   font-size: 14px;
