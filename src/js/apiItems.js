@@ -34,3 +34,13 @@ async function fetchGenres() {
   }
 }
 fetchGenres();
+
+async function fetchById(movie_id) {
+  try {
+    const data = await axios.get(`${URL}/movie/${movie_id}?api_key=${KEY}`);
+    console.log(data);
+  } catch (error) {
+    console.error(error);
+  }
+}
+fetchById(296777);
