@@ -35,7 +35,7 @@ async function fetchGenres() {
 }
 fetchGenres();
 
-async function fetchById(movie_id) {
+export async function fetchById(movie_id) {
   try {
     const result = await axios.get(`${URL}/movie/${movie_id}?api_key=${KEY}`);
     console.log(result.data);
