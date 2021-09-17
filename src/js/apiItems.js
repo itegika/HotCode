@@ -11,38 +11,33 @@ async function fetchTrends(page) {
 document.addEventListener('DOMContentLoaded', fetchTrendsGallery);
 
 async function fetchTrendsGallery(e) {
+
+async function fetchTrends(page) {
+    const request = await axios.get(`${URL}/trending/movie/week?api_key=${KEY}&page=${page}`);
+    console.log(request);
+    const data = request.data;
+    console.log(data);
+    const result = data.results;
+    console.log(result);
+    // console.log(result[0]);
+    return result;
+  }
+  
+document.addEventListener('DOMContentLoaded', fetchTrendsGallery);
+console.log(document);
+async function fetchTrendsGallery(e) {
+  // e.preventDefault();
+
   try {
     const movies = await fetchTrends(1);
     console.log(movies);
     renderGallery(movies);
+
+    // console.log(movies);
+
   } catch (error) {
     console.error(error);
   }
-}
-
-function renderGallery(movies) {
-  console.log(movies);
-  const markup = movies
-    .map(movie => {
-      return `<li class="layout__item">
-                      <a class="layout__link" href="${movie.poster_path}">
-                      <img class="layout__image" src="${movie.backdrop_path}" alt="${
-        movie.title
-      }" width="" loading="lazy" />
-                      </a>
-                      <ul class="attribut__list">
-                          <li class="attribut__item">${movie.original_title}</li>
-                          <li class="attribut__item">${movie.genre_ids.map(genre => {
-                            return `<span>${movie.genre_ids[0]}</span>`;
-                          })}
-                        </li> 
-                          <li class="attribut__item">${movie.release_date}</li>
-                      </ul>
-                  </li>`;
-    })
-    .join('');
-  gallery.insertAdjacentHTML('beforeend', markup);
-  return gallery;
 }
 
 async function fetchGenres() {
@@ -55,3 +50,5 @@ async function fetchGenres() {
   }
 }
 fetchGenres();
+
+
