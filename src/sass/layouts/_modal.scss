@@ -1,0 +1,49 @@
+.modal__title {
+  font-family: Roboto;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.15;
+  color: var(--main-color);
+}
+
+.modal__description-title {
+  font-family: Roboto;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  color: #8c8c8c;
+}
+.modal__description-value {
+  font-family: Roboto;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.16;
+  color: var(--main-color);
+}
+
+.modal__about {
+  font-family: Roboto;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  text-transform: uppercase;
+  color: var(--main-color);
+}
+
+.modal__caps {
+  text-transform: uppercase;
+}
+
+.modal__about-text {
+  font-family: Roboto;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.25;
+  color: var(--main-color);
+}
+
+@media screen and (max-width: 767px) {
+  .modal__img {
+    width: 240px;
+  }
+}
