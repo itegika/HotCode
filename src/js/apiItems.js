@@ -28,6 +28,7 @@ async function fetchGenres() {
     const res = await axios.get(`${URL}/genre/movie/list?api_key=${KEY}`);
     const genres = res.data.genres;
     console.log(genres);
+    return genres;
   } catch (error) {
     console.error(error);
   }
