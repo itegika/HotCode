@@ -36,10 +36,38 @@
     }
   }
   &__heart {
-    animation: heartBeat;
-    animation-duration: 1500ms;
-    animation-iteration-count: infinite;
-    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    @keyframes heartFadeInOut {
+      0% {
+        transform: scale(1);
+      }
+      25% {
+        transform: scale(0.97);
+      }
+      35% {
+        transform: scale(0.9);
+      }
+      45% {
+        transform: scale(1.1);
+      }
+      55% {
+        transform: scale(0.9);
+      }
+      65% {
+        transform: scale(1.1);
+      }
+      75% {
+        transform: scale(1.03);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    & {
+      animation-name: heartFadeInOut;
+      animation-iteration-count: infinite;
+      animation-duration: 1000ms;
+    }
 
     &:hover,
     &:focus {
