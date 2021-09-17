@@ -1,0 +1,77 @@
+.footer {
+  text-align: center;
+  background-color: var(--background-secondary);
+  padding-left: 48px;
+  padding-right: 36px;
+  min-width: 320px;
+
+  @media screen and (max-width: 767px) {
+    padding-top: 29px;
+    padding-bottom: 30px;
+  }
+
+  @media screen and (min-width: 768px) {
+    padding-top: 30px;
+    padding-bottom: 28px;
+  }
+
+  &__text {
+    color: #545454;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 1.14;
+
+    @media screen and (min-width: 768px) {
+      font-size: 16px;
+      line-height: 1.187;
+    }
+  }
+  &__modal-link {
+    color: #545454;
+    text-decoration: underline;
+    &:focus,
+    &:hover {
+      color: var(--accent-color);
+    }
+  }
+  &__heart {
+    @keyframes heartFadeInOut {
+      0% {
+        transform: scale(1);
+      }
+      25% {
+        transform: scale(0.97);
+      }
+      35% {
+        transform: scale(0.9);
+      }
+      45% {
+        transform: scale(1.1);
+      }
+      55% {
+        transform: scale(0.9);
+      }
+      65% {
+        transform: scale(1.1);
+      }
+      75% {
+        transform: scale(1.03);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    & {
+      animation-name: heartFadeInOut;
+      animation-iteration-count: infinite;
+      animation-duration: 1000ms;
+    }
+
+    &:hover,
+    &:focus {
+      animation-play-state: paused;
+    }
+  }
+}
