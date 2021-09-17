@@ -14,7 +14,7 @@ async function fetchQuery(query) {
  const request = await axios.get(`${URL}/search/movie?api_key=${KEY}&query=${query}`);  
  refs.layout__list.innerHTML = "";
  renderGallery(request.data.results); 
- if (request.data.results.length === 0) {return error}
+ if (request.data.results.length === 0) {Notiflix.Notify.info(`Input valid name please`)  }
  } catch (error) {
   Notiflix.Notify.failure(`We can't find this film 😱`)   
  } 
