@@ -17,5 +17,6 @@ function onClick(e) {
     body.classList.add('library-bcg');
     myLibrary.form.classList.add('hidden');
     myLibrary.libraryBtns.classList.remove('hidden');
+    myLibrary.home.classList.add('hide-after');
   }
 }
