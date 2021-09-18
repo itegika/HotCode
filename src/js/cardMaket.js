@@ -11,7 +11,7 @@ export default function renderGallery(movies) {
                       <img class="layout__image" src="${BASEimgURL}${SIZE}${movie.poster_path}" alt="${movie.title}" width="" loading="lazy" />
                       </a>
                       <ul class="attribut__list">
-                          <li class="attribut__item">${movie.original_title}</li>
+                          <li class="attribut__item-title">${movie.original_title}</li>
                           <li class="attribut__item">${movie.release_date.slice(0,4)}</li>
                       </ul>
                   </li>`
