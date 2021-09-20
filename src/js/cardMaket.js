@@ -1,4 +1,8 @@
+
 import { fetchById } from "./apiItems";
+
+
+import fetchGenres from './apiItems';
 
 const BASEimgURL ='https://image.tmdb.org/t/p/'
 const SIZE = 'w500'
@@ -8,14 +12,15 @@ export default function renderGallery(movies) {
     console.log(movies);
       const markup = movies.map((movie => {
           return `<li class="layout__item">
+
                       <a class="layout__link" href="#" data-id="${movie.id}">
                       <img class="layout__image" src="${BASEimgURL}${SIZE}${movie.backdrop_path}" alt="${movie.title}" width="" loading="lazy" />
+
+                      <a class="layout__link" href="${BASEimgURL}${SIZE}${movie.backdrop_path}">
+                      <img class="layout__image" src="${BASEimgURL}${SIZE}${movie.poster_path}" alt="${movie.title}" width="" loading="lazy" />
                       </a>
                       <ul class="attribut__list">
-                          <li class="attribut__item">${movie.original_title}</li>
-                          <li class="attribut__item">${movie.genre_ids.map(genre => {
-                            return `${movie.genre_ids[0]}`})}
-                        </li> 
+                          <li class="attribut__item-title">${movie.original_title}</li>
                           <li class="attribut__item">${movie.release_date.slice(0,4)}</li>
                       </ul>
                   </li>`
@@ -26,3 +31,4 @@ export default function renderGallery(movies) {
       }
 
     //   ${BASEimgURL}${SIZE}${movie.poster_path}
+

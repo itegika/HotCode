@@ -5,7 +5,7 @@ import {renderMovieCard} from './modal';
 const URL = 'https://api.themoviedb.org/3';
 const KEY = '15f17b74af157d4eeef693405d33f902';
 
-async function fetchTrends(page) {
+export async function fetchTrends(page) {
   const request = await axios.get(`${URL}/trending/movie/week?api_key=${KEY}&page=${page}`);
   const result = request.data.results;
   console.log(result);
@@ -15,10 +15,11 @@ async function fetchTrends(page) {
 
 document.addEventListener('DOMContentLoaded', fetchTrendsGallery);
 
-async function fetchTrendsGallery(e) {
+export async function fetchTrendsGallery(e) {
   try {
     const movies = await fetchTrends(1);
     console.log(movies);
+
     const gal = renderGallery(movies);
 
    console.log(gal);
@@ -31,12 +32,15 @@ async function fetchTrendsGallery(e) {
     // console.log(els);
     // console.log(e.target);
     // console.log(movies);
+
+    renderGallery(movies);
+
   } catch (error) {
     console.error(error);
   }
 }
 
-async function fetchGenres() {
+export async function fetchGenres() {
   try {
     const res = await axios.get(`${URL}/genre/movie/list?api_key=${KEY}`);
     const genres = res.data.genres;

@@ -1,7 +1,8 @@
 body {
   font-family: 'Roboto', sans-serif;
   color: var(--main-color);
-
+}
+.home-bcg {
   // 0 - 767
   @media screen and (max-width: 767px) {
     background-image: url(../images/header-background-mobile@1x.jpg);
@@ -9,13 +10,11 @@ body {
     background-size: 100% 230px;
     background-position: top;
   }
-
   @media screen and (min-device-pixel-ratio: 2) and (max-width: 767px),
     (min-resolution: 192dpi) and (max-width: 767px),
     (min-resolution: 2dppx) and (max-width: 767px) {
     background-image: url(../images/header-background-mobile-2x.jpg);
   }
-
   // 768 - 1024
   @media screen and (min-width: 768px) {
     background-image: url(../images/header-background-tablet@1x.jpg);
@@ -23,13 +22,11 @@ body {
     background-size: 100% 230px;
     background-position: top;
   }
-
   @media screen and (min-device-pixel-ratio: 2) and (min-width: 768px),
     (min-resolution: 192dpi) and (min-width: 768px),
     (min-resolution: 2dppx) and (min-width: 768px) {
     background-image: url(../images/header-background-tablet@2x.jpg);
   }
-
   // 1024+
   @media screen and (min-width: 1024px) {
     background-image: url(../images/header-background-desktop@2x.jpg);
@@ -37,14 +34,13 @@ body {
     background-size: 100% 230px;
     background-position: top;
   }
-
   @media screen and (min-device-pixel-ratio: 2) and (min-width: 1024px),
     (min-resolution: 192dpi) and (min-width: 1024px),
     (min-resolution: 2dppx) and (min-width: 1024px) {
     background-image: url(../images/header-background-desktop@2x.jpg);
   }
 }
-.library {
+.library-bcg {
   // 0 - 767
   @media screen and (max-width: 767px) {
     background-image: url(../images/library/header-library-background-mobile@1x.jpg);
@@ -52,13 +48,11 @@ body {
     background-size: 100% 230px;
     background-position: top;
   }
-
   @media screen and (min-device-pixel-ratio: 2) and (max-width: 767px),
     (min-resolution: 192dpi) and (max-width: 767px),
     (min-resolution: 2dppx) and (max-width: 767px) {
     background-image: url(../images/library/header-library-background-mobile@2x.jpg);
   }
-
   // 768 - 1024
   @media screen and (min-width: 768px) {
     background-image: url(../images/library/header-library-background-tablet@1x.jpg);
@@ -66,13 +60,11 @@ body {
     background-size: 100% 230px;
     background-position: top;
   }
-
   @media screen and (min-device-pixel-ratio: 2) and (min-width: 768px),
     (min-resolution: 192dpi) and (min-width: 768px),
     (min-resolution: 2dppx) and (min-width: 768px) {
     background-image: url(../images/library/header-library-background-tablet@2x.jpg);
   }
-
   // 1024+
   @media screen and (min-width: 1024px) {
     background-image: url(../images/library/header-library-background-desktop@1x.jpg);
@@ -80,7 +72,6 @@ body {
     background-size: 100% 230px;
     background-position: top;
   }
-
   @media screen and (min-device-pixel-ratio: 2) and (min-width: 1024px),
     (min-resolution: 192dpi) and (min-width: 1024px),
     (min-resolution: 2dppx) and (min-width: 1024px) {
@@ -96,16 +87,13 @@ h6 {
   font-family: 'Roboto', sans-serif;
   margin: 0;
 }
-
 button {
   padding: 0;
   font-family: 'Roboto', sans-serif;
 }
-
 p {
   margin: 0;
 }
-
 ul,
 ol {
   margin-top: 0;
@@ -113,12 +101,14 @@ ol {
   list-style: none;
   padding: 0;
 }
-
 a {
   text-decoration: none;
 }
-
 img {
   display: block;
   max-width: 100%;
+}
+.hidden {
+  visibility: hidden;
+  display: none;
 }
