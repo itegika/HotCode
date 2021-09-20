@@ -1,7 +1,8 @@
 import { fetchById } from './apiItems';
 import { fetchGenres} from './apiItems';
 import { fetchTrends} from './apiItems';
-import {renderMovieCard} from './modal';
+import { renderMovieCard } from './modal';
+import { addToQueue, addToWatched } from './localeStorage';
 
 const BASEimgURL ='https://image.tmdb.org/t/p/'
 const SIZE = 'w500'
@@ -69,12 +70,17 @@ function onMovieClick(event) {
     modalBlock.classList.remove('is-hidden');
     const main = document.querySelector("main");
     main.classList.add("backdrop");
-  
-    modalBlock.innerHTML = renderMovieCard(data);
+      
+      modalBlock.innerHTML = renderMovieCard(data);
+      const buttonAddToWatched = modalBlock.querySelector(".watched__button")
+      const buttonAddToQueue = modalBlock.querySelector(".queve__button")
+      buttonAddToWatched.addEventListener("click",addToWatched)
+      buttonAddToQueue.addEventListener("click",addToQueue )
     const closeButton = modalBlock.querySelector('.close__modal');
     closeButton.addEventListener('click', e=> {
       e.preventDefault();
-  
+      buttonAddToQueue.removeEventListener("click", addToQueue);
+      buttonAddToWatched.removeEventListener("click",addToWatched)
       e.target.parentNode.classList.toggle('is-hidden');
       console.log(e.target);
       main.classList.remove("backdrop");
@@ -82,6 +88,8 @@ function onMovieClick(event) {
     })
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') {
+      buttonAddToQueue.removeEventListener("click", addToQueue);
+      buttonAddToWatched.removeEventListener("click",addToWatched)
         closeButton.parentNode.classList.toggle('is-hidden');
         main.classList.remove("backdrop");
       }
