@@ -73,12 +73,17 @@ function onMovieClick(event) {
   const movie = fetchById(movie_id).then(data => {
   const modalBlock = document.querySelector('.modal');
   modalBlock.classList.remove('is-hidden');
+  const main = document.querySelector("main");
+  main.classList.add("backdrop");
+
   modalBlock.innerHTML = renderMovieCard(data);
   const closeButton = modalBlock.querySelector('.close__modal');
   closeButton.addEventListener('click', e=> {
     e.preventDefault();
 
     e.target.parentNode.classList.toggle('is-hidden');
+    main.classList.remove("backdrop");
+    
   })
   });
   // console.log(movie);
