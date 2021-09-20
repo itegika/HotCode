@@ -73,17 +73,17 @@ function onMovieClick(event) {
     const closeButton = modalBlock.querySelector('.close__modal');
     closeButton.addEventListener('click', e => {
       e.preventDefault();
-      buttonAddToQueue.removeEventListener('click', addToQueue);
-      buttonAddToWatched.removeEventListener('click', addToWatched);
+      // buttonAddToQueue.removeEventListener('click', addToQueue);
+      // buttonAddToWatched.removeEventListener('click', addToWatched);
       e.target.parentNode.classList.toggle('is-hidden');
       console.log(e.target);
       main.classList.remove('backdrop');
     });
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape') {
-        buttonAddToQueue.removeEventListener('click', addToQueue);
-        buttonAddToWatched.removeEventListener('click', addToWatched);
-        closeButton.parentNode.classList.toggle('is-hidden');
+        // buttonAddToQueue.removeEventListener('click', addToQueue);
+        // buttonAddToWatched.removeEventListener('click', addToWatched);
+        closeButton.parentNode.classList.add('is-hidden');
         main.classList.remove('backdrop');
       }
     });
@@ -93,7 +93,7 @@ function onMovieClick(event) {
       const container = document.querySelector('main');
       if (e.target === container) {
         const modal = document.querySelector('.modal');
-        closeButton.parentNode.classList.toggle('is-hidden');
+        closeButton.parentNode.classList.add('is-hidden');
         main.classList.remove('backdrop');
       }
     });
