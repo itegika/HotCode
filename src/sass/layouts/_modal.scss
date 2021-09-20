@@ -133,15 +133,25 @@
   border-style: none;
 }
 
-.watched__button {
+.watched__button:hover,
+.watched__button:focus {
   color: var(--white-color);
   background-color: var(--accent-color);
+  border: none;
+}
+.queve__button:hover,
+.queve__button:focus {
+  color: var(--white-color);
+  background-color: var(--accent-color);
+  border: none;
 }
 
-.queve__button {
+.queve__button,
+.watched__button {
   border: 1px solid var(--main-color);
   background-color: var(--white-color);
 }
+
 .modal__description-wrapper {
   margin-bottom: 20px;
 }

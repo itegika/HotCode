@@ -94,6 +94,17 @@ function onMovieClick(event) {
         main.classList.remove("backdrop");
       }
       });
+
+      document.addEventListener("mouseup", function(e) {
+        console.log(e.target);
+        const container = document.querySelector("main");
+        if (e.target === container) {
+          const modal = document.querySelector(".modal");
+          closeButton.parentNode.classList.toggle('is-hidden');
+          main.classList.remove("backdrop");
+        }   
+      });
+
     });
     // console.log(movie);
   
