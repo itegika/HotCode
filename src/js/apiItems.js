@@ -29,3 +29,41 @@ export async function fetchById(movie_id) {
   }
 }
 fetchById(296777);
+// <<<<<<< modalfix
+
+
+// function onMovieClick(event) {
+
+//   event.preventDefault();
+//   const movie_id = event.target.nodeName === "IMG" ? event.target.parentNode.dataset.id : event.target.dataset.id;
+//   // console.log(event.target.parentNode.dataset.id);
+//   // console.log(event.target.dataset.id);
+//   const movie = fetchById(movie_id).then(data => {
+//   const modalBlock = document.querySelector('.modal');
+//   modalBlock.classList.remove('is-hidden');
+//   const main = document.querySelector("main");
+//   main.classList.add("backdrop");
+
+//   modalBlock.innerHTML = renderMovieCard(data);
+//   const closeButton = modalBlock.querySelector('.close__modal');
+//   closeButton.addEventListener('click', e=> {
+//     e.preventDefault();
+
+//     e.target.parentNode.classList.toggle('is-hidden');
+//     console.log(e.target);
+//     main.classList.remove("backdrop");
+    
+//   })
+//   document.addEventListener('keydown', function(e) {
+//     if (e.key === 'Escape') {
+//       closeButton.parentNode.classList.toggle('is-hidden');
+//       main.classList.remove("backdrop");
+//     }
+//     });
+//   });
+//   // console.log(movie);
+
+//   return movie;
+// } 
+// =======
+// >>>>>>> dev
