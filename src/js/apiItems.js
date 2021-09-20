@@ -82,9 +82,16 @@ function onMovieClick(event) {
     e.preventDefault();
 
     e.target.parentNode.classList.toggle('is-hidden');
+    console.log(e.target);
     main.classList.remove("backdrop");
     
   })
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      closeButton.parentNode.classList.toggle('is-hidden');
+      main.classList.remove("backdrop");
+    }
+    });
   });
   // console.log(movie);
 
