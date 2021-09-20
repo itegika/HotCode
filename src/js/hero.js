@@ -54,4 +54,3 @@ catch (error) {
   console.error(error);
 }
  }
-//  fetchTrendsGallery(request.data.results);

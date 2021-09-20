@@ -12,7 +12,7 @@ export function renderMovieCard(movie) {
         <button class="close__modal">&times;</button> 
             <div class="modal__wrapper">
                 <div class="modal__image">
-                    <a href="#" class="modal__img-link">
+                    <a href="#" class="modal__img-link" data-id=${movie.id}>
                         <img class="modal__img" src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}">
                     </a>
                 </div>
