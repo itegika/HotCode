@@ -1,7 +1,5 @@
 import axios from 'axios';
 import renderGallery from './cardMaket';
-import debounce from 'lodash.debounce'
-import Notiflix from "notiflix";
 const URL = 'https://api.themoviedb.org/3';
 const KEY = '15f17b74af157d4eeef693405d33f902';
 const refs = {
@@ -19,12 +17,7 @@ async function fetchQuery(query) {
  if (request.data.results.length === 0) {
  refs.error__text.innerHTML = `<span style="color:red;">Search result not successful. Enter the correct movie name and try again.</span>`;}
  } catch (error) {
- } 
-  }
-const clearErrorMsg = () => {
-  refs.error__text.innerHTML = "";
-}
-
+ } }
 const searchInput = (e) => {
   e.preventDefault();
   query = e.target.elements.searchQuery.value.trim();
@@ -32,5 +25,3 @@ const searchInput = (e) => {
   }
   export default searchInput ;
  refs.form.addEventListener('submit', searchInput)
-
- 
