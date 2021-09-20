@@ -7,7 +7,7 @@ import { addToQueue, addToWatched } from './localeStorage';
 const BASEimgURL = 'https://image.tmdb.org/t/p/';
 const SIZE = 'w500';
 const layout__list = document.querySelector('.layout__list');
-console.log(layout__list);
+//////console.log(layout__list);
 document.addEventListener('DOMContentLoaded', fetchTrendsGallery);
 async function fetchTrendsGallery(e) {
   try {
