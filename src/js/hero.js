@@ -15,22 +15,20 @@ async function fetchQuery(query) {
  const request = await axios.get(`${URL}/search/movie?api_key=${KEY}&query=${query}`);  
  refs.layout__list.innerHTML = "";
  renderGallery(request.data.results); 
- if (request.data.results.length === 0) {Notiflix.Notify.info(`Input valid name please`)  }
+ refs.error__text.innerHTML = `Good job, we found ${request.data.total_results} movies on this tag.`
+ if (request.data.results.length === 0) {
+ refs.error__text.innerHTML = `<span style="color:red;">Search result not successful. Enter the correct movie name and try again.</span>`;}
  } catch (error) {
-  Notiflix.Notify.failure(`We can't find this film 😱`)   
  } 
   }
- 
+
+
 const searchInput = (e) => {
   e.preventDefault();
-  query = e.target.value;
+  query = e.target.elements.searchQuery.value.trim();
     fetchQuery(query);
-    if (query.length <= 1) {
-      refs.error__text.innerHTML = 'Search result not successful. Enter the correct movie name and try again.';
-   }
-   else{refs.error__text.innerHTML ="";}
   }
   export default searchInput ;
- refs.form.addEventListener('input', debounce(searchInput,100))
+ refs.form.addEventListener('submit', searchInput)
 
  
