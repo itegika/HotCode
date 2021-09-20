@@ -29,9 +29,14 @@
   font-size: 12px;
   line-height: 1.33;
   color: var(--accent-color);
-  
 }
-
+.attribut__item.rating__value {
+  display: inline;
+  padding: 1px 9px;
+  background-color: var(--accent-color);
+  border-radius: 5px;
+  color: var(--white-color);
+}
 @media screen and (min-width: 768px) and (max-width: 1023px) {
   .layout {
     margin-top: 157px;

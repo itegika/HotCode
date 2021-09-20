@@ -3,22 +3,18 @@ import { fetchGenres } from './apiItems';
 import { fetchTrends } from './apiItems';
 import { renderMovieCard } from './modal';
 import { addToQueue, addToWatched } from './localeStorage';
+import { renderPagination } from './paginator';
 
 const BASEimgURL = 'https://image.tmdb.org/t/p/';
 const SIZE = 'w500';
 const layout__list = document.querySelector('.layout__list');
-console.log(layout__list);
+//////console.log(layout__list);
 document.addEventListener('DOMContentLoaded', fetchTrendsGallery);
-console.log(fetchTrends);
-async function fetchTrendsGallery(e) {
+async function fetchTrendsGallery(e, page = 1) {
   try {
-    const movies = await fetchTrends(1);
-    console.log(movies);
+    const { results: movies, total_pages, page: pageFromRequest } = await fetchTrends(page);
     const genres = await fetchGenres();
-    const genresId = movies.map(el => el.genre_ids);
-    console.log(genresId);
     const newMovies = movies.map(el => {
-      console.log(el);
       const arr = el.genre_ids.map(genre => {
         return genres.find(el => el.id === genre).name;
       });
@@ -26,23 +22,22 @@ async function fetchTrendsGallery(e) {
       return { ...el, genre: arr };
     });
     const gal = renderGallery(newMovies);
-
-    console.log(gal);
-    const items = document.querySelectorAll('.layout__link');
-    console.log(items);
+    const items = document.querySelectorAll('.layout__list');
     items.forEach(item => {
       item.addEventListener('click', onMovieClick);
     });
     renderGallery(newMovies);
+    renderPagination(pageFromRequest, total_pages, page => fetchTrendsGallery(null, page));
   } catch (error) {
     console.error(error);
   }
 }
 export default function renderGallery(newMovies) {
+  layout__list.innerHTML = '';
   const markup = newMovies
     .map(movie => {
       return `<li class="layout__item">    
-                      <a class="layout__link" href="#" data-id="${movie.id}">
+                      <a class="layout__link" href="" data-id="${movie.id}">
                       <img class="layout__image" src="${BASEimgURL}${SIZE}${
         movie.poster_path
       }" alt="${movie.title}" width="" loading="lazy" />
@@ -80,27 +75,27 @@ function onMovieClick(event) {
     const closeButton = modalBlock.querySelector('.close__modal');
     closeButton.addEventListener('click', e => {
       e.preventDefault();
-      buttonAddToQueue.removeEventListener('click', addToQueue);
-      buttonAddToWatched.removeEventListener('click', addToWatched);
+      // buttonAddToQueue.removeEventListener('click', addToQueue);
+      // buttonAddToWatched.removeEventListener('click', addToWatched);
       e.target.parentNode.classList.toggle('is-hidden');
       console.log(e.target);
       main.classList.remove('backdrop');
     });
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape') {
-        buttonAddToQueue.removeEventListener('click', addToQueue);
-        buttonAddToWatched.removeEventListener('click', addToWatched);
-        closeButton.parentNode.classList.toggle('is-hidden');
+        // buttonAddToQueue.removeEventListener('click', addToQueue);
+        // buttonAddToWatched.removeEventListener('click', addToWatched);
+        closeButton.parentNode.classList.add('is-hidden');
         main.classList.remove('backdrop');
       }
     });
 
-    document.addEventListener('mouseup', function (e) {
+    document.addEventListener('click', function (e) {
       console.log(e.target);
       const container = document.querySelector('main');
       if (e.target === container) {
-        const modal = document.querySelector('.modal');
-        closeButton.parentNode.classList.toggle('is-hidden');
+        // const modal = document.querySelector('.modal');
+        closeButton.parentNode.classList.add('is-hidden');
         main.classList.remove('backdrop');
       }
     });
