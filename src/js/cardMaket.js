@@ -1,6 +1,8 @@
 import { fetchById } from './apiItems';
 import { fetchGenres} from './apiItems';
 import { fetchTrends} from './apiItems';
+import {renderMovieCard} from './modal';
+
 const BASEimgURL ='https://image.tmdb.org/t/p/'
 const SIZE = 'w500'
 const layout__list = document.querySelector('.layout__list');
@@ -19,8 +21,19 @@ async function fetchTrendsGallery(e) {
         const arr = el.genre_ids.map(genre=>{
              return genres.find(el=>el.id === genre).name      
     })
+
+   
+
     return {...el, genre: arr}
 });
+const gal = renderGallery(newMovies);
+
+console.log(gal);
+ const items = document.querySelectorAll('.layout__link');
+ console.log(items);
+ items.forEach(item=>{
+     item.addEventListener('click', onMovieClick);
+ }); 
 renderGallery (newMovies);
 } catch (error) {
     console.error(error);
@@ -43,3 +56,40 @@ export default function renderGallery(newMovies) {
   layout__list.insertAdjacentHTML('beforeend', markup);
   return layout__list;
 }
+
+
+function onMovieClick(event) {
+
+    event.preventDefault();
+    const movie_id = event.target.nodeName === "IMG" ? event.target.parentNode.dataset.id : event.target.dataset.id;
+    // console.log(event.target.parentNode.dataset.id);
+    // console.log(event.target.dataset.id);
+    const movie = fetchById(movie_id).then(data => {
+    const modalBlock = document.querySelector('.modal');
+    modalBlock.classList.remove('is-hidden');
+    const main = document.querySelector("main");
+    main.classList.add("backdrop");
+  
+    modalBlock.innerHTML = renderMovieCard(data);
+    const closeButton = modalBlock.querySelector('.close__modal');
+    closeButton.addEventListener('click', e=> {
+      e.preventDefault();
+  
+      e.target.parentNode.classList.toggle('is-hidden');
+      console.log(e.target);
+      main.classList.remove("backdrop");
+      
+    })
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeButton.parentNode.classList.toggle('is-hidden');
+        main.classList.remove("backdrop");
+      }
+      });
+    });
+    // console.log(movie);
+  
+    return movie;
+  } 
+
+  
