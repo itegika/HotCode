@@ -17,7 +17,7 @@ export function renderMovieCard(movie) {
                     </a>
                 </div>
                 <div class="modal__content">
-                    <h2 class="modal__title"></h2>${movie.title}
+                    <h2 class="modal__title">${movie.title}</h2>
                 <div class="modal__description-wrapper">
                     <ul class="modal__description">
                         <li class="modal__description-title">Vote / Votes</li>
