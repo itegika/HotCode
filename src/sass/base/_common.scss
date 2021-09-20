@@ -1,4 +1,5 @@
 body {
+  height: 100%;
   font-family: 'Roboto', sans-serif;
   color: var(--main-color);
 }
@@ -111,4 +112,12 @@ img {
 .hidden {
   visibility: hidden;
   display: none;
+  position: absolute;
+}
+.main {
+  padding-bottom: 150px;
+}
+html {
+  position: relative;
+  min-height: 100%;
 }

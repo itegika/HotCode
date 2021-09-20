@@ -1,3 +1,4 @@
+import { fetchById } from './apiItems';
 import { fetchGenres} from './apiItems';
 import { fetchTrends} from './apiItems';
 const BASEimgURL ='https://image.tmdb.org/t/p/'
@@ -20,18 +21,17 @@ async function fetchTrendsGallery(e) {
     })
     return {...el, genre: arr}
 });
-renderGallery (newMovies, genres);
+renderGallery (newMovies);
 } catch (error) {
     console.error(error);
 }
 }
-export default function renderGallery(newMovies, genres) {
-    console.log(newMovies);
+export default function renderGallery(newMovies) {
       const markup = newMovies.map((movie => {
-          return `<li class="layout__item">
-                      
+          return `<li class="layout__item">    
+                      <a class="layout__link" href="#" data-id="${movie.id}">
                       <img class="layout__image" src="${BASEimgURL}${SIZE}${movie.poster_path}" alt="${movie.title}" width="" loading="lazy" />
-                      </a>
+                      </a>                      
                       <ul class="attribut__list">
                           <li class="attribut__item-title">${movie.original_title}</li>
                           <li class="attribut__item">${movie.genre.map ((gen => gen)).join(', ')}</li>
@@ -39,6 +39,7 @@ export default function renderGallery(newMovies, genres) {
                       </ul>
                   </li>`
       })).join('');
-          layout__list.insertAdjacentHTML('beforeend', markup);
-          return layout__list;
-      }
+
+  layout__list.insertAdjacentHTML('beforeend', markup);
+  return layout__list;
+}

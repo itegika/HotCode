@@ -4,7 +4,6 @@
 
 // BASE
 
-@import './base/common';
 @import './base/container';
 
 //LAYOUTS
@@ -13,3 +12,5 @@
 @import './layouts/apiItems';
 @import './layouts/footer';
 @import './layouts/modal';
+
+@import './base/common';
