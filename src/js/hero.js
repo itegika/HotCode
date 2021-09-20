@@ -21,7 +21,9 @@ async function fetchQuery(query) {
  } catch (error) {
  } 
   }
-
+const clearErrorMsg = () => {
+  refs.error__text.innerHTML = "";
+}
 
 const searchInput = (e) => {
   e.preventDefault();
