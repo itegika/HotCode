@@ -1,3 +1,33 @@
+.modal {
+  position: fixed;
+  background: #fff;
+  top: 50px;
+  left: 50%;
+  transform: translate(-50%);
+  box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.2);
+}
+
+.is-hidden {
+  display: none;
+}
+
+.close__modal {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 24px;
+  appearance: none;
+  box-shadow: none;
+  outline: none;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.row {
+  margin: 0 -15px;
+}
+
 .modal__title {
   margin-bottom: 20px;
   font-family: Roboto;

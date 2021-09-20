@@ -1,14 +1,19 @@
 import SimpleLightbox from "simplelightbox";
+import { fetchById } from "./apiItems";
 
-const modalLink = document.querySelector(".layout");
-
-function renderMovieCard(movieCard) {
-    const markup = movieCard.map((movie => {
-        return `
+export function renderMovieCard(movie) {
+    // const markup = movieCard.map((movie => {
+        // const lightbox = new SimpleLightbox('.layout__link');
+        // lightbox.show();
+        
+        const markup =  `
+        <div class="container">
+        <div class="row">
+        <button class="close__modal">&times;</button> 
             <div class="modal__wrapper">
                 <div class="modal__image">
                     <a href="#" class="modal__img-link">
-                        <img class="modal__img" src="${movie.poster_path}" alt="${movie.title}">
+                        <img class="modal__img" src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}">
                     </a>
                 </div>
                 <div class="modal__content">
@@ -29,12 +34,12 @@ function renderMovieCard(movieCard) {
                         <li class="modal__description-value modal__caps">${movie.popularity}</li>
                         <li class="modal__description-value modal__caps">${movie.original_title}</li>
                         <li class="modal__description-value">
-                        ${movie.genres.length > 1 ?
+                        ${movie.genres && movie.genres.length > 1 ?
                             `<ul class ="language_list"> 
                             ${movie.genres.map(genre => {
                               return `<li class = "language_item">${genre.name}</li>`
                             }).join("")}
-                            </ul>` : `${movie.genres[0].name}`}
+                            </ul>` : `${movie.genres && movie.genres[0].name}`}
                         </li>
                     </ul>
                 </div>
@@ -45,30 +50,33 @@ function renderMovieCard(movieCard) {
                 <button type="button" class="button queve__button">add to queue</button>
                 </div>
                 </div>
-            </div>` 
-    }));
-    
+            </div>
+            </div>
+            </div>`;
+            return markup;
 }
 
 
-modalLink.addEventListener("click", openModal);
+// modalLink.addEventListener("click", openModal);
 
 
-function openModal(event) {
-    try {
-        movie_id = event.target.value;
-        const movieCard = await fetchById();
-        console.log(movieCard);
-        new SimpleLightbox('.layout a', { 
+// export function openModal(event) {
+//     // event.preventDefault();
+//     try {
+//         // const gallery = new SimpleLightbox('.layout__link', { 
             
-            showCounter: false,
-            disableScroll: false,
-            captionDelay: 250,
-            docClose: true,
-        });
-        renderMovieCard(movieCard);
+//         //     showCounter: false,
+//         //     disableScroll: false,
+//         //     captionDelay: 250,
+//         //     docClose: true,
+//         // });
+//         // const movieCard = fetchById(movie_id);
+//         // console.log(movieCard);
+        
+//         // renderMovieCard(movieCard);
 
-    } catch (error) {
-        console.error(error);
-    }
-}
+//     } catch (error) {
+//         console.error(error);
+//     }
+// }
+
