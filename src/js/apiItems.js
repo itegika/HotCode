@@ -7,6 +7,7 @@ export async function fetchTrends(page) {
   console.log(result);
   return result;
 }
+
 export async function fetchGenres() {
   try {
     const res = await axios.get(`${URL}/genre/movie/list?api_key=${KEY}`);
@@ -17,6 +18,7 @@ export async function fetchGenres() {
     console.error(error);
   }
 }
+
 export async function fetchById(movie_id) {
   try {
     const result = await axios.get(`${URL}/movie/${movie_id}?api_key=${KEY}`);

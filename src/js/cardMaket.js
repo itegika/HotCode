@@ -1,33 +1,45 @@
 import { fetchById } from './apiItems';
-
-import fetchGenres from './apiItems';
-
-const BASEimgURL = 'https://image.tmdb.org/t/p/';
-const SIZE = 'w500';
+import { fetchGenres} from './apiItems';
+import { fetchTrends} from './apiItems';
+const BASEimgURL ='https://image.tmdb.org/t/p/'
+const SIZE = 'w500'
 const layout__list = document.querySelector('.layout__list');
 console.log(layout__list);
-export default function renderGallery(movies) {
-  console.log(movies);
-  const markup = movies
-    .map(movie => {
-      return `<li class="layout__item">
-
+document.addEventListener('DOMContentLoaded', fetchTrendsGallery);
+console.log(fetchTrends)
+async function fetchTrendsGallery(e) {
+  try {
+    const movies = await fetchTrends(1);
+    console.log(movies);
+    const genres = await fetchGenres();
+    const genresId = movies.map((el => el.genre_ids))
+    console.log(genres);
+    const newMovies = movies.map(el=>{
+        console.log(el);
+        const arr = el.genre_ids.map(genre=>{
+             return genres.find(el=>el.id === genre).name      
+    })
+    return {...el, genre: arr}
+});
+renderGallery (newMovies);
+} catch (error) {
+    console.error(error);
+}
+}
+export default function renderGallery(newMovies) {
+      const markup = newMovies.map((movie => {
+          return `<li class="layout__item">    
                       <a class="layout__link" href="#" data-id="${movie.id}">
-                 
-                      <img class="layout__image" src="${BASEimgURL}${SIZE}${
-        movie.poster_path
-      }" alt="${movie.title}" width="" loading="lazy" />
-                      </a>
+                      <img class="layout__image" src="${BASEimgURL}${SIZE}${movie.poster_path}" alt="${movie.title}" width="" loading="lazy" />
+                      </a>                      
                       <ul class="attribut__list">
                           <li class="attribut__item-title">${movie.original_title}</li>
-                          <li class="attribut__item">${movie.release_date.slice(0, 4)}</li>
+                          <li class="attribut__item">${movie.genre.map ((gen => gen)).join(', ')}</li>
+                          <li class="attribut__item">${movie.release_date.slice(0,4)}</li>
                       </ul>
-                  </li>`;
-    })
-    .join('');
+                  </li>`
+      })).join('');
 
   layout__list.insertAdjacentHTML('beforeend', markup);
   return layout__list;
 }
-
-//   ${BASEimgURL}${SIZE}${movie.poster_path}
