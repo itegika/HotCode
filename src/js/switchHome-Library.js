@@ -14,9 +14,9 @@ function onClick(e) {
   console.log(e.target);
   e.target.classList.add('current');
   if (myLibrary.library.classList.contains('current')) {
-    body.classList.add('library-bcg');
+    body.classList.replace('home-bcg', 'library-bcg');
     myLibrary.form.classList.add('hidden');
     myLibrary.libraryBtns.classList.remove('hidden');
-    myLibrary.home.classList.add('hide-after');
+    myLibrary.home.classList.remove('current');
   }
 }
