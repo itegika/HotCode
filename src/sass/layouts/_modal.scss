@@ -4,7 +4,6 @@
   top: 50px;
   left: 50%;
   transform: translate(-50%);
-  box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.2);
 }
 
 .is-hidden {
@@ -26,6 +25,7 @@
 
 .row {
   margin: 0 -15px;
+  box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.2);
 }
 
 .modal__title {
@@ -64,6 +64,10 @@
 
 .modal__line {
   color: #8c8c8c;
+}
+
+.modal__description-list {
+  max-width: 135px;
 }
 
 .modal__description-value {
@@ -131,6 +135,10 @@
 }
 
 @media screen and (max-width: 767px) {
+  .modal {
+    width: 280px;
+  }
+
   .modal__img {
     width: 240px;
     margin-bottom: 30px;
@@ -161,6 +169,10 @@
 }
 
 @media screen and (min-width: 768px) and (max-width: 1023px) {
+  .modal {
+    width: 618px;
+  }
+
   .modal__wrapper {
     display: flex;
     padding: 40px 28px;
@@ -201,6 +213,10 @@
 }
 
 @media screen and (min-width: 1024px) {
+  .modal {
+    width: 882px;
+  }
+
   .modal__img {
     width: 396px;
     max-width: 396px;
