@@ -1,5 +1,5 @@
 .modal {
-  position: fixed;
+  position: absolute;
   background: #fff;
   top: 50px;
   left: 50%;
@@ -162,7 +162,6 @@
     max-height: 96vh;
     overflow: auto;
   }
-
 
   .modal__img {
     width: 240px;

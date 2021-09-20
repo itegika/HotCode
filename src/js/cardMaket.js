@@ -35,7 +35,7 @@ export default function renderGallery(newMovies) {
   const markup = newMovies
     .map(movie => {
       return `<li class="layout__item">    
-                      <a class="layout__link" href="#" data-id="${movie.id}">
+                      <a class="layout__link" href="" data-id="${movie.id}">
                       <img class="layout__image" src="${BASEimgURL}${SIZE}${
         movie.poster_path
       }" alt="${movie.title}" width="" loading="lazy" />
@@ -88,11 +88,11 @@ function onMovieClick(event) {
       }
     });
 
-    document.addEventListener('mouseup', function (e) {
+    document.addEventListener('click', function (e) {
       console.log(e.target);
       const container = document.querySelector('main');
       if (e.target === container) {
-        const modal = document.querySelector('.modal');
+        // const modal = document.querySelector('.modal');
         closeButton.parentNode.classList.add('is-hidden');
         main.classList.remove('backdrop');
       }
