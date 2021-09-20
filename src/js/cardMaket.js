@@ -5,9 +5,9 @@ import fetchGenres from './apiItems';
 const BASEimgURL = 'https://image.tmdb.org/t/p/';
 const SIZE = 'w500';
 const layout__list = document.querySelector('.layout__list');
-console.log(layout__list);
+//console.log(layout__list);
 export default function renderGallery(movies) {
-  console.log(movies);
+  //console.log(movies);
   const markup = movies
     .map(movie => {
       return `<li class="layout__item">
