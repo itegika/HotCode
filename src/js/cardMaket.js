@@ -13,22 +13,21 @@ async function fetchTrendsGallery(e) {
   try {
     const movies = await fetchTrends(1);
     const genres = await fetchGenres();
-    const newMovies = movies.map(el=>{
-        const arr = el.genre_ids.map(genre=>{
-             return genres.find(el=>el.id === genre).name      
-    })
+    const newMovies = movies.map(el => {
+      const arr = el.genre_ids.map(genre => {
+        return genres.find(el => el.id === genre).name;
+      });
 
-   
-
-    return {...el, genre: arr}
-});
-const gal = renderGallery(newMovies);
-const items = document.querySelectorAll('.layout__link');
- items.forEach(item=>{
-     item.addEventListener('click', onMovieClick);
- }); 
-renderGallery (newMovies);
-} catch (error) {
+      return { ...el, genre: arr };
+    });
+    const gal = renderGallery(newMovies);
+    console.log(gal);
+    const items = document.querySelectorAll('.layout__list');
+    items.forEach(item => {
+      item.addEventListener('click', onMovieClick);
+    });
+    renderGallery(newMovies);
+  } catch (error) {
     console.error(error);
   }
 }
