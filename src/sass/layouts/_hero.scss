@@ -72,7 +72,8 @@
     width: 136px;
     height: 44px;
     &:hover,
-    &:focus {
+    &:focus,
+    &.current {
       border-color: transparent;
       background-color: #ff6b01;
     }

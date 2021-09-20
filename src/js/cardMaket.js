@@ -7,18 +7,18 @@ import { addToQueue, addToWatched } from './localeStorage';
 const BASEimgURL ='https://image.tmdb.org/t/p/'
 const SIZE = 'w500'
 const layout__list = document.querySelector('.layout__list');
-console.log(layout__list);
+//////console.log(layout__list);
 document.addEventListener('DOMContentLoaded', fetchTrendsGallery);
-console.log(fetchTrends)
+//////console.log(fetchTrends)
 async function fetchTrendsGallery(e) {
   try {
     const movies = await fetchTrends(1);
-    console.log(movies);
+    //////console.log(movies);
     const genres = await fetchGenres();
     const genresId = movies.map((el => el.genre_ids))
-    console.log(genres);
+    //////console.log(genres);
     const newMovies = movies.map(el=>{
-        console.log(el);
+        //////console.log(el);
         const arr = el.genre_ids.map(genre=>{
              return genres.find(el=>el.id === genre).name      
     })
@@ -29,9 +29,9 @@ async function fetchTrendsGallery(e) {
 });
 const gal = renderGallery(newMovies);
 
-console.log(gal);
+//////console.log(gal);
  const items = document.querySelectorAll('.layout__link');
- console.log(items);
+ //////console.log(items);
  items.forEach(item=>{
      item.addEventListener('click', onMovieClick);
  }); 
@@ -63,8 +63,8 @@ function onMovieClick(event) {
 
     event.preventDefault();
     const movie_id = event.target.nodeName === "IMG" ? event.target.parentNode.dataset.id : event.target.dataset.id;
-    // console.log(event.target.parentNode.dataset.id);
-    // console.log(event.target.dataset.id);
+    // //////console.log(event.target.parentNode.dataset.id);
+    // //////console.log(event.target.dataset.id);
     const movie = fetchById(movie_id).then(data => {
     const modalBlock = document.querySelector('.modal');
     modalBlock.classList.remove('is-hidden');
@@ -82,7 +82,7 @@ function onMovieClick(event) {
       buttonAddToQueue.removeEventListener("click", addToQueue);
       buttonAddToWatched.removeEventListener("click",addToWatched)
       e.target.parentNode.classList.toggle('is-hidden');
-      console.log(e.target);
+      //////console.log(e.target);
       main.classList.remove("backdrop");
       
     })
@@ -96,7 +96,7 @@ function onMovieClick(event) {
       });
 
       document.addEventListener("mouseup", function(e) {
-        console.log(e.target);
+        // //////console.log(e.target);
         const container = document.querySelector("main");
         if (e.target === container) {
           const modal = document.querySelector(".modal");
@@ -106,7 +106,7 @@ function onMovieClick(event) {
       });
 
     });
-    // console.log(movie);
+    // //////console.log(movie);
   
     return movie;
   } 

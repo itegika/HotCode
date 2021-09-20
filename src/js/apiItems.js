@@ -12,7 +12,7 @@ export async function fetchGenres() {
   try {
     const res = await axios.get(`${URL}/genre/movie/list?api_key=${KEY}`);
     const genres = await res.data.genres;
-    console.log(genres);
+    // console.log(genres);
     return genres;
   } catch (error) {
     console.error(error);
