@@ -24,7 +24,7 @@
   }
 }
 .search-container {
-  width: 100%;
+  // width: 100%;
   margin-top: 35px;
   flex-direction: column;
 }
@@ -57,6 +57,7 @@
   }
 }
 .submit-btn {
+  cursor: pointer;
   background-color: transparent;
   border-style: none;
   fill: transparent;
@@ -79,6 +80,7 @@
   width: 290px;
   margin: 45px auto;
   & > button {
+    cursor: pointer;
     background-color: transparent;
     color: white;
     border-radius: 5px;
