@@ -1,0 +1,38 @@
+.paginator {
+  display: flex;
+  margin-top: 50px;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+  .arrow-left,
+  .arrow-right {
+    display: flex;
+    padding: 8px;
+    background-color: lightgray;
+    font-size: 24px;
+    margin: 0 6px;
+    cursor: pointer;
+    border: 1px solid gray;
+    border-radius: 4px;
+    &.disable {
+      opacity: 0.5;
+      cursor: default;
+    }
+  }
+  #pagination-num-buttons {
+    display: flex;
+    > div {
+      display: flex;
+      padding: 8px;
+      background-color: lightgray;
+      font-size: 16px;
+      margin: 0 6px;
+      cursor: pointer;
+      border: 1px solid gray;
+      border-radius: 4px;
+      &.active {
+        background-color: coral;
+      }
+    }
+  }
+}
