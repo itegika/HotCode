@@ -26,9 +26,16 @@ function onClick(e) {
     buttonWatched.classList.add("current");
     renderWatched();
   } else if (queueArr.length !== 0) {
+    buttonWatched.disabled = "true";
     buttonQueue.classList.add("current");
     renderQueue();
   } else {
+      buttonWatched.disabled = "true";
+    buttonQueue.disabled = "true";
+    const layout__list = document.querySelector('.layout__list');
+    layout__list.innerHTML = "";
+      const pagination = document.querySelector("#pagination");
+pagination.innerHTML = "";
     Notiflix.Notify.failure("Library is empty");
   }
   buttonWatched.addEventListener("click", () => {
