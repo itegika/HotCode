@@ -3,7 +3,12 @@ const URL = 'https://api.themoviedb.org/3';
 const KEY = '15f17b74af157d4eeef693405d33f902';
 export async function fetchTrends(page) {
   const request = await axios.get(`${URL}/trending/movie/week?api_key=${KEY}&page=${page}`);
+<<<<<<< HEAD
   const result = request.data;
+=======
+  const result = request.data.results;
+  // console.log(result);
+>>>>>>> b8bef3f843ceb7ccaff5c318136b823d15a199ac
   return result;
 }
 
@@ -21,7 +26,11 @@ export async function fetchGenres() {
 export async function fetchById(movie_id) {
   try {
     const result = await axios.get(`${URL}/movie/${movie_id}?api_key=${KEY}`);
+<<<<<<< HEAD
     // console.log(result.data);
+=======
+    // console.log(result.data); 
+>>>>>>> b8bef3f843ceb7ccaff5c318136b823d15a199ac
     return result.data;
   } catch (error) {
     console.error(error);
