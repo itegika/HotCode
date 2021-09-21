@@ -60,19 +60,52 @@ function onMovieClick(event) {
   // console.log(event.target.parentNode.dataset.id);
   // console.log(event.target.dataset.id);
   const movie = fetchById(movie_id).then(data => {
+    // console.log(data.id)
+    const id = data.id;
     const modalBlock = document.querySelector('.modal');
     modalBlock.classList.remove('is-hidden');
     const main = document.querySelector('main');
     main.classList.add('backdrop');
     modalBlock.innerHTML = renderMovieCard(data);
-    const watchedArr = JSON.parse(localStorage.getItem("watchedArr"));
-    const queueArr = JSON.parse(localStorage.getItem("queuedArr"));
-    const buttonAddToWatched = modalBlock.querySelector('.watched__button');
-    const buttonAddToQueue = modalBlock.querySelector('.queve__button');
-    if(checkup({movie_id,}))
-    
-    buttonAddToWatched.addEventListener('click', addToWatched);
-    buttonAddToQueue.addEventListener('click', addToQueue);
+    const buttonAddToWatched = document.querySelector(".watched__button");
+    const buttonAddToQueue = document.querySelector(".queve__button");
+    // console.log(localStorage.getItem("watchedArr"));
+     buttonAddToWatched.addEventListener('click', addToWatched);
+      buttonAddToQueue.addEventListener('click', addToQueue);
+    if (localStorage.getItem("watchedArr")) {
+      console.log("watched")
+      const watchedArr = Array.from((JSON.parse(localStorage.getItem("watchedArr"))));
+      if (checkup({id}, watchedArr)) {
+      buttonAddToWatched.removeEventListener('click', addToWatched);
+      buttonAddToWatched.classList.replace("watched__button", "remove__from__watched")
+      const buttonRemoveFromWatched = document.querySelector(".remove__from__watched");
+      buttonRemoveFromWatched.textContent = "Added to watched";
+      }
+      else {
+        console.log("checkup break");;
+    }
+    } else {
+      console.log("break");
+    }
+    if (localStorage.getItem("queueArr")) {
+            console.log("queue")
+      const queueArr = Array.from((JSON.parse(localStorage.getItem("queueArr"))));
+      console.log(queueArr)
+      console.log(id)
+      if (checkup({ id }, queueArr)) {
+        buttonAddToQueue.removeEventListener('click', addToQueue);
+        buttonAddToQueue.classList.replace("queve__button", "remove__from__queue")
+        const buttonRemoveFromQueue = document.querySelector(".remove__from__queue");
+        buttonRemoveFromQueue.textContent = "Added to Queue";
+      }
+      else {
+        console.log(" checkup break");
+
+      }
+    }else {
+      console.log("break");
+    }
+ 
     const closeButton = modalBlock.querySelector('.close__modal');
     closeButton.addEventListener('click', e => {
       e.preventDefault();
@@ -92,7 +125,7 @@ function onMovieClick(event) {
     });
 
     document.addEventListener('click', function (e) {
-      console.log(e.target);
+      // console.log(e.target);
       const container = document.querySelector('main');
       if (e.target === container) {
         // const modal = document.querySelector('.modal');

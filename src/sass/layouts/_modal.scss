@@ -134,7 +134,9 @@
 }
 
 .watched__button:hover,
-.watched__button:focus {
+.watched__button:focus,
+.remove__from__watched,
+.remove__from__queue {
   color: var(--white-color);
   background-color: var(--accent-color);
   border: none;

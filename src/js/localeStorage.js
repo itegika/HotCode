@@ -9,43 +9,66 @@ if (!localStorage.getItem("watchedArr")) {
 if (!localStorage.getItem("queueArr")) {
   localStorage.setItem("queueArr", "[]");
 }
+//  const changeWatchedButton = () => {
+//   const buttonAddToWatched = document.querySelector(".watched__button");
+//   buttonAddToWatched.removeEventListener('click', addToWatched);
+//   buttonAddToWatched.classList.replace("watched__button", "remove__from__watched")
+//   const buttonRemoveFromWatched = document.querySelector(".remove__from__watched");
+//   buttonRemoveFromWatched.textContent = "Added to watched";
+// }
+//   const changeQueueButton = () => {
+//   const buttonAddToQueue = document.querySelector(".queve__button");
+//   buttonAddToQueue.removeEventListener('click', addToQueue);
+//   buttonAddToQueue.classList.replace("queve__button", "remove__from__queue")
+//   const buttonRemoveFromQueue = document.querySelector(".remove__from__queue");
+//   buttonRemoveFromQueue.textContent = "Added to Queue";
+// }
 export function addToWatched() {
   const imgLink = document.querySelector(".modal__img-link");
-  // console.log(title.textContent, img.src, genre.textContent, popularity.textContent, description.textContent);
-  const film = {
-    id: imgLink.dataset.id,
-  };
+  const id = imgLink.dataset.id;
   const watchedFilmArr = Array.from(JSON.parse(localStorage.getItem("watchedArr")));
   console.log(watchedFilmArr)
-  if (checkup(film,watchedFilmArr)) {
+  if (checkup({id},watchedFilmArr)) {
    Notiflix.Notify.failure("Error, film is already in watched");
     return;
   } else {
-     
-    watchedFilmArr.push(film);
-    console.log(watchedFilmArr);
+    watchedFilmArr.push({id});
+
+    console.log("watched",watchedFilmArr);
     localStorage.setItem("watchedArr", JSON.stringify(watchedFilmArr));
     Notiflix.Notify.success("Film have been added to watched");
-    } 
+      const buttonAddToWatched = document.querySelector(".watched__button");
+  buttonAddToWatched.removeEventListener('click', addToWatched);
+  buttonAddToWatched.classList.replace("watched__button", "remove__from__watched")
+  const buttonRemoveFromWatched = document.querySelector(".remove__from__watched");
+  buttonRemoveFromWatched.textContent = "Added to watched";
+  }
+    
   }
 export function addToQueue() {
 
-    const imgLink = document.querySelector(".modal__img-link");
-  // console.log(title.textContent, img.src, genre.textContent, popularity.textContent, description.textContent);
-  // const film = {
+  const imgLink = document.querySelector(".modal__img-link");
   const id = imgLink.dataset.id;
-  // };
+
   const queueArr = Array.from(JSON.parse(localStorage.getItem("queueArr")));
-  // console.log(queueArr);
+  console.log(queueArr);
   if (checkup({id},queueArr)) {
    Notiflix.Notify.failure("Error, film is already in Queue");
     return;
   } else {
-    queueArr.push({id});
-    console.log(queueArr);
+    queueArr.push({ id });
+    console.log("queue", queueArr);
     localStorage.setItem("queueArr", JSON.stringify(queueArr));
     Notiflix.Notify.success("Film have been added to Queue");
-  }
+    const buttonAddToQueue = document.querySelector(".queve__button");
+    buttonAddToQueue.textContent = "Added to Queue";
+    buttonAddToQueue.removeEventListener('click', addToQueue);
+    buttonAddToQueue.classList.replace("queve__button", "remove__from__queue")
+    const buttonRemoveFromQueue = document.querySelector(".remove__from__queue");
+  //   buttonRemoveFromQueue.textContent = "Added to Queue";
+  }   
+    // changeQueueButton();
+
 }
 export function renderWatched() {
   const BASEimgURL ='https://image.tmdb.org/t/p/'
@@ -105,12 +128,18 @@ const layout__list = document.querySelector('.layout__list');
 }
 
 export function checkup(film, filmsArr) {
-  let status = false;
+  let status = false; 
+  console.log("info from checkup", film.id);
+  console.log("info from checkup", filmsArr.length);
   for (let i = 0; i < filmsArr.length; i++) {
-    if (filmsArr[i].id === film.id) {
+  console.log("info from checkup", filmsArr[i].id);
+
+    if (Number(filmsArr[i].id) === Number(film.id)) {
+      console.log("fuck")
       status = true;
       return status;
     }
   }
   return status;
 }
+ 
