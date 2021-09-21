@@ -11,11 +11,12 @@ const refs = {
   form: document.querySelector('#search-form'),
   layout__list: document.querySelector('.layout__list'),
   error__text: document.querySelector('.error-text'),
+
 };
 
 let query = '';
 
-async function fetchQuery(query, page = 1) {
+export async function fetchQuery(query, page = 1) {
   try {
     const request = await axios.get(
       `${URL}/search/movie?api_key=${KEY}&query=${query}&page=${page}`,
