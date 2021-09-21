@@ -22,5 +22,53 @@
       </ul>
     </nav>
   </div>
+          <ul id="auth-btns" class="lauth-buttons">
+            <li class="logged-in">
+              <a href="#" class="logout" id="logout">Logout</a>
+            </li>
+            <li class="logged-out">
+              <a href="#" class="login" data-target="modal-login">Login</a>
+            </li>
+            <li class="logged-out">
+              <a href="#" class="signUp" data-target="modal-signup">Sign up</a>
+            </li>
+          </ul>
+    </div>
+    </div>
+    <!-- SIGN UP MODAL -->
+    <div id="modal-signup" class="modal hidden ">
+      <div class="modal-content">
+        <h4>Sign up</h4><br />
+        <form id="signup-form">
+          <div class="input-field">
+            
+            <label for="signup-email">Email address<input type="email" name="email" id="signup-email" required /></label>
+          </div>
+          <div class="input-field">
+            
+            <label for="signup-password">Choose password<input type="password" name="password" id="signup-password" required /></label>
+          </div>
+          <button class="btn yellow darken-2 z-depth-0">Sign up</button>
+        </form>
+      </div>
+    </div>
+
+      <!-- LOGIN MODAL -->
+      <div id="modal-login" class="modal hidden">
+        <div class="modal-content">
+          <h4>Login</h4><br />
+          <form id="login-form">
+            <div class="input-field">
+             
+              <label for="login-email">Email address<input type="email" id="login-email" required /></label>
+            </div>
+            <div class="input-field">
+              
+              <label for="login-password">Your password<input type="password" id="login-password" required /></label>
+            </div>
+            <button class="logInBtn">Login</button>
+          </form>
+        </div>
+      </div>
   </header>
 
