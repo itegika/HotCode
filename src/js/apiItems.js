@@ -12,6 +12,12 @@ export async function fetchGenres() {
     const res = await axios.get(`${URL}/genre/movie/list?api_key=${KEY}`);
     const genres = await res.data.genres;
     // console.log(genres);
+    setTimeout(function () {
+      const preloader = document.getElementById("page-preloader");
+      if (!preloader.classList.contains("done")) {
+          preloader.classList.add("done");
+      }
+  }, 1000);
     return genres;
   } catch (error) {
     console.error(error);
