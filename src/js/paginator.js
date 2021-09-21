@@ -103,10 +103,29 @@ export function renderPagination(page, totalPages = 50, callback) {
       paginationElement.appendChild(div);
     });
   }
+  function disableArrowBtn() {
+    if (pagination.current === 1) {
+      arrowLeft.classList.add('disable');
+    } else {
+      arrowLeft.classList.remove('disable');
+    }
+  
+    if (pagination.current === pagination.total) {
+      arrowRight.classList.add('disable');
+    } else {
+      arrowRight.classList.remove('disable');
+    }
+  }
   arrowLeft.onclick = onArrowLeftClick;
   arrowRight.onclick = onArrowRightClick;
   disableArrowBtn();
   setupPagination();
+  if ( pagination.total <= 1 ) {
+  paginationElement.innerHTML = ''
+  arrowLeft.classList.add('hidden')
+  arrowRight.classList.add('hidden')
+}
+ 
 }
 
 // прячет первую и последнюю страницу по бокам для мобильных гаджетов с маленьким экраном
@@ -130,17 +149,3 @@ export function renderPagination(page, totalPages = 50, callback) {
 //   } catch (error) {}
 // }
 // делает неактивными кнопки-стрелки на первой и последней  странице
-function disableArrowBtn() {
-  if (pagination.current === 1) {
-    arrowLeft.classList.add('disable');
-  } else {
-    arrowLeft.classList.remove('disable');
-  }
-
-  if (pagination.current === pagination.total) {
-    arrowRight.classList.add('disable');
-  } else {
-    arrowRight.classList.remove('disable');
-  }
-}
-// hideExtremeButtons();

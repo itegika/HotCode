@@ -2,7 +2,7 @@ import { fetchById } from './apiItems';
 import { fetchGenres } from './apiItems';
 import { fetchTrends } from './apiItems';
 import { renderMovieCard } from './modal';
-import { addToQueue, addToWatched } from './localeStorage';
+import { addToQueue, addToWatched, checkup } from './localeStorage'
 import { renderPagination } from './paginator';
 
 const BASEimgURL = 'https://image.tmdb.org/t/p/';
@@ -57,20 +57,56 @@ export default function renderGallery(newMovies) {
 function onMovieClick(event) {
   event.preventDefault();
   const movie_id =
-    event.target.nodeName === 'IMG' ? event.target.parentNode.dataset.id : event.target.dataset.id;
+  event.target.nodeName === 'IMG' ? event.target.parentNode.dataset.id : event.target.dataset.id;
   // console.log(event.target.parentNode.dataset.id);
   // console.log(event.target.dataset.id);
   const movie = fetchById(movie_id).then(data => {
+    // console.log(data.id)
+    const id = data.id;
     const modalBlock = document.querySelector('.modal');
     modalBlock.classList.remove('hidden');
     const main = document.querySelector('main');
     main.classList.add('backdrop');
-
     modalBlock.innerHTML = renderMovieCard(data);
-    const buttonAddToWatched = modalBlock.querySelector('.watched__button');
-    const buttonAddToQueue = modalBlock.querySelector('.queve__button');
-    buttonAddToWatched.addEventListener('click', addToWatched);
-    buttonAddToQueue.addEventListener('click', addToQueue);
+    const buttonAddToWatched = document.querySelector(".watched__button");
+    const buttonAddToQueue = document.querySelector(".queve__button");
+    // console.log(localStorage.getItem("watchedArr"));
+     buttonAddToWatched.addEventListener('click', addToWatched);
+      buttonAddToQueue.addEventListener('click', addToQueue);
+    if (localStorage.getItem("watchedArr")) {
+      console.log("watched")
+      const watchedArr = Array.from((JSON.parse(localStorage.getItem("watchedArr"))));
+      if (checkup({id}, watchedArr)) {
+      buttonAddToWatched.removeEventListener('click', addToWatched);
+      buttonAddToWatched.classList.replace("watched__button", "remove__from__watched")
+      const buttonRemoveFromWatched = document.querySelector(".remove__from__watched");
+      buttonRemoveFromWatched.textContent = "Added to watched";
+      }
+      else {
+        console.log("checkup break");;
+    }
+    } else {
+      console.log("break");
+    }
+    if (localStorage.getItem("queueArr")) {
+            console.log("queue")
+      const queueArr = Array.from((JSON.parse(localStorage.getItem("queueArr"))));
+      console.log(queueArr)
+      console.log(id)
+      if (checkup({ id }, queueArr)) {
+        buttonAddToQueue.removeEventListener('click', addToQueue);
+        buttonAddToQueue.classList.replace("queve__button", "remove__from__queue")
+        const buttonRemoveFromQueue = document.querySelector(".remove__from__queue");
+        buttonRemoveFromQueue.textContent = "Added to Queue";
+      }
+      else {
+        console.log(" checkup break");
+
+      }
+    }else {
+      console.log("break");
+    }
+ 
     const closeButton = modalBlock.querySelector('.close__modal');
     closeButton.addEventListener('click', e => {
       e.preventDefault();
@@ -90,7 +126,7 @@ function onMovieClick(event) {
     });
 
     document.addEventListener('click', function (e) {
-      console.log(e.target);
+      // console.log(e.target);
       const container = document.querySelector('main');
       if (e.target === container) {
         // const modal = document.querySelector('.modal');
