@@ -15,7 +15,14 @@
   line-height: 1.72;
   font-weight: 500;
   margin-left: 12px;
+
+  &:hover,
+  &:focus {
+    color: var(--accent-color);
+    font-size: 31px;
+  }
 }
+
 @media screen and (max-width: 767px) {
   .film {
     display: none;
@@ -66,7 +73,45 @@
   width: 29px;
   height: 29px;
   align-self: center;
+  @keyframes heartFadeInOut {
+    0% {
+      transform: scale(1);
+    }
+    25% {
+      transform: scale(0.97);
+    }
+    35% {
+      transform: scale(0.9);
+    }
+    45% {
+      transform: scale(1.1);
+    }
+    55% {
+      transform: scale(0.9);
+    }
+    65% {
+      transform: scale(1.1);
+    }
+    75% {
+      transform: scale(1.03);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  & {
+    animation-name: heartFadeInOut;
+    animation-iteration-count: infinite;
+    animation-duration: 1000ms;
+  }
+
+  &:hover,
+  &:focus {
+    animation-play-state: paused;
+  }
 }
+
 @media screen and (max-width: 479px) {
   .film {
     display: none;
@@ -89,6 +134,17 @@
 .menu__link-library {
   display: block;
   white-space: nowrap;
+}
+.menu__link:hover::after,
+.menu__link:focus::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -7%;
+  background-color: var(--accent-color);
+  width: 100%;
+  height: 3px;
+  border-radius: 2px;
 }
 
 .menu__link.current::after {
@@ -148,5 +204,68 @@
       background-color: var(--accent-color);
       z-index: 10;
     }
+  }
+}
+// ANIMATIONS
+.slideInLeft {
+  -webkit-animation-name: slideInLeft;
+  animation-name: slideInLeft;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+@-webkit-keyframes slideInLeft {
+  0% {
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+    visibility: visible;
+  }
+  100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+}
+@keyframes slideInLeft {
+  0% {
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+    visibility: visible;
+  }
+  100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+}
+
+.slideInRight {
+  -webkit-animation-name: slideInRight;
+  animation-name: slideInRight;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+@-webkit-keyframes slideInRight {
+  0% {
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+    visibility: visible;
+  }
+  100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+}
+@keyframes slideInRight {
+  0% {
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+    visibility: visible;
+  }
+  100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
   }
 }
