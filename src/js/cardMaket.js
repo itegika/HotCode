@@ -2,7 +2,7 @@ import { fetchById } from './apiItems';
 import { fetchGenres } from './apiItems';
 import { fetchTrends } from './apiItems';
 import { renderMovieCard } from './modal';
-import { addToQueue, addToWatched, checkup,removeFromQueue } from './localeStorage'
+import { watchedActions, queueActions, checkup,removeFromQueue,removeFromWatched } from './localeStorage'
 import { renderPagination } from './paginator';
 
 const BASEimgURL = 'https://image.tmdb.org/t/p/';
@@ -61,55 +61,50 @@ function onMovieClick(event) {
   // console.log(event.target.parentNode.dataset.id);
   // console.log(event.target.dataset.id);
   const movie = fetchById(movie_id).then(data => {
-    // console.log(data.id)
     const id = data.id;
     const modalBlock = document.querySelector('.modal');
     modalBlock.classList.remove('hidden');
     const main = document.querySelector('main');
     main.classList.add('backdrop');
     modalBlock.innerHTML = renderMovieCard(data);
-    const buttonAddToWatched = document.querySelector(".watched__button");
-    const buttonAddToQueue = document.querySelector(".queve__button");
-    // console.log(localStorage.getItem("watchedArr"));
-     buttonAddToWatched.addEventListener('click', addToWatched);
-      buttonAddToQueue.addEventListener('click', addToQueue);
+    const buttonWatched = document.querySelector(".watched__button");
+    const buttonQueue = document.querySelector(".queve__button");
+    buttonWatched.addEventListener('click', watchedActions);
+    buttonQueue.addEventListener('click', queueActions);
     if (localStorage.getItem("watchedArr")) {
-      // console.log("watched")
       const watchedArr = Array.from((JSON.parse(localStorage.getItem("watchedArr"))));
-      if (checkup({id}, watchedArr)) {
-      buttonAddToWatched.removeEventListener('click', addToWatched);
-      buttonAddToWatched.classList.replace("watched__button", "remove__from__watched")
-      const buttonRemoveFromWatched = document.querySelector(".remove__from__watched");
-        buttonRemoveFromWatched.textContent = "Added to watched";
-        
+      if (checkup(id, watchedArr)) {
+        buttonWatched.classList.add("remove__watched")
+        // buttonWatched.classList.remove("watched__button");
+      buttonWatched.textContent = "Added to watched";
       }
-      else {
-        console.log("checkup break");;
-    }
-    } else {
-      //console.log("break");
-    }
+    } 
     if (localStorage.getItem("queueArr")) {
-            //console.log("queue")
       const queueArr = Array.from((JSON.parse(localStorage.getItem("queueArr"))));
-      //console.log(queueArr)
-      //console.log(id)
-      if (checkup({ id }, queueArr)) {
-        buttonAddToQueue.removeEventListener('click', addToQueue);
-        buttonAddToQueue.classList.replace("queve__button", "remove__from__queue")
-        const buttonRemoveFromQueue = document.querySelector(".remove__from__queue");
-        buttonRemoveFromQueue.textContent = "Added to Queue";
-        buttonRemoveFromQueue.addEventListener("click", 
-      removeFromQueue())
+      if (checkup(id, queueArr)) {
+        buttonQueue.classList.add("remove__queue");
+        // buttonQueue.classList.remove("queve__button");
+        buttonQueue.textContent = "Added to Queue";
       }
-      else {
-        //console.log(" checkup break");
-
-      }
-    }else {
-      //console.log("break");
     }
- 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     const closeButton = modalBlock.querySelector('.close__modal');
     closeButton.addEventListener('click', e => {
       e.preventDefault();

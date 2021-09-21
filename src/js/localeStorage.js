@@ -2,9 +2,9 @@ import renderGallery from './cardMaket';
 import { fetchById } from './apiItems';
 import Notiflix from "notiflix";
 import { onMovieClick } from "./cardMaket"
-import { renderPagination } from './paginator';
+// import { renderPagination } from './paginator';
 
-// localStorage.clear();
+// localStorage.clear(); 
 if (!localStorage.getItem("watchedArr")) {
   localStorage.setItem("watchedArr", "[]");
 }
@@ -14,60 +14,49 @@ if (!localStorage.getItem("queueArr")) {
 
 
 
-export function addToWatched() {
+export function watchedActions() {
   const imgLink = document.querySelector(".modal__img-link");
   const id = imgLink.dataset.id;
   const watchedFilmArr = Array.from(JSON.parse(localStorage.getItem("watchedArr")));
-  console.log(watchedFilmArr)
-  if (checkup(id,watchedFilmArr)) {
-   Notiflix.Notify.failure("Error, film is already in watched");
-    return;
+  const buttonWatched = document.querySelector(".watched__button");
+  if(!buttonWatched.classList.contains("remove__watched")){
+        watchedFilmArr.push(id);
+        console.log("watched", watchedFilmArr);
+        localStorage.setItem("watchedArr", JSON.stringify(watchedFilmArr));
+        Notiflix.Notify.success("Film have been added to watched");
+    buttonWatched.classList.add("remove__watched");
+    // buttonWatched.classList.remove("watched__button");
+    buttonWatched.textContent = "Added to watched";
   } else {
-    watchedFilmArr.push(id);
-
-    console.log("watched",watchedFilmArr);
-    localStorage.setItem("watchedArr", JSON.stringify(watchedFilmArr));
-    Notiflix.Notify.success("Film have been added to watched");
-      const buttonAddToWatched = document.querySelector(".watched__button");
-      buttonAddToWatched.removeEventListener('click', addToWatched);
-      buttonAddToWatched.classList.replace("watched__button", "remove__from__watched")
-      const buttonRemoveFromWatched = document.querySelector(".remove__from__watched");
-    buttonRemoveFromWatched.textContent = "Added to watched";
-    
+    removeFromWatched();
+    buttonWatched.classList.remove("remove__watched");
+    // buttonWatched.classList.add("watched__button");
+    buttonWatched.textContent = "Add to watched";
   }
-    
-  }
+}
 
 
 
-export function addToQueue() {
-
+export function queueActions() {
   const imgLink = document.querySelector(".modal__img-link");
   const id = imgLink.dataset.id;
-
   const queueArr = Array.from(JSON.parse(localStorage.getItem("queueArr")));
-  console.log(queueArr);
-  if (checkup(id, queueArr)) {
-    Notiflix.Notify.failure("Error, film is already in Queue");
-    return;
-  } else {
+  const buttonQueue = document.querySelector(".queve__button");   
+  if (!buttonQueue.classList.contains("remove__queue")){
     queueArr.push(id);
     console.log("queue", queueArr);
     localStorage.setItem("queueArr", JSON.stringify(queueArr));
     Notiflix.Notify.success("Film have been added to Queue");
-    const buttonAddToQueue = document.querySelector(".queve__button");
-    buttonAddToQueue.textContent = "Added to Queue";
-    buttonAddToQueue.removeEventListener('click', addToQueue);
-    buttonAddToQueue.classList.replace("queve__button", "remove__from__queue")
-    const buttonRemoveFromQueue = document.querySelector(".remove__from__queue");
-    buttonRemoveFromQueue.addEventListener("click", removeFromQueue());
-      
-
+    buttonQueue.classList.add("remove__queue");
+    // buttonQueue.classList.remove("queve__button");
+    buttonQueue.textContent = "Added to Queue";
+  } else {
+    removeFromQueue();
+    buttonQueue.classList.remove("remove__queue");
+    // buttonQueue.classList.add("queve__button");
+    buttonQueue.textContent = "Add to Queue";
   }   
-    // changeQueueButton();
-
 }
-
 
 
 export function renderWatched() {
@@ -77,8 +66,6 @@ const SIZE = 'w500'
   const pagination = document.querySelector("#pagination");
 pagination.innerHTML = "";
   layout__list.innerHTML = "";
-  
-  // renderPagination();
   const arr = JSON.parse(localStorage.getItem("watchedArr"));
   console.log(arr);
   arr.map((idMovie => {
@@ -139,11 +126,7 @@ const layout__list = document.querySelector('.layout__list');
 
 export function checkup(id, idFilmsArr) {
   let status = false; 
-  // console.log("info from checkup", film.id);
-  // console.log("info from checkup", filmsArr.length);
   for (let i = 0; i < idFilmsArr.length; i++) {
-  // console.log("info from checkup", filmsArr[i].id);
-
     if (Number(idFilmsArr[i]) === Number(id)) {
       console.log("fuck")
       status = true;
@@ -161,4 +144,12 @@ export function checkup(id, idFilmsArr) {
   const newArr =  queueArr.filter(elem => elem != id);
   console.log(newArr);
   localStorage.setItem("queueArr", JSON.stringify(newArr));
+ }
+ export function removeFromWatched() {
+  const watchedArr = JSON.parse(localStorage.getItem("watchedArr"));
+  const imgLink =  document.querySelector(".modal__img-link");
+  const id =  imgLink.dataset.id;
+  const newArr =  watchedArr.filter(elem => elem != id);
+  console.log(newArr);
+  localStorage.setItem("watchedArr", JSON.stringify(newArr));
  }
