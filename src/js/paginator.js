@@ -109,7 +109,7 @@ export function renderPagination(page, totalPages = 50, callback) {
   setupPagination();
 }
 
-// // прячет первую и последнюю страницу по бокам для мобильных гаджетов с маленьким экраном
+// прячет первую и последнюю страницу по бокам для мобильных гаджетов с маленьким экраном
 // function hideExtremeButtons(totalPages) {
 //   try {
 //     if (/Android|webOS|iPhone|iPad|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
@@ -143,3 +143,4 @@ function disableArrowBtn() {
     arrowRight.classList.remove('disable');
   }
 }
+// hideExtremeButtons();
