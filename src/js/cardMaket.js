@@ -2,16 +2,16 @@ import { fetchById } from './apiItems';
 import { fetchGenres } from './apiItems';
 import { fetchTrends } from './apiItems';
 import { renderMovieCard } from './modal';
-import { addToQueue, addToWatched, checkup } from './localeStorage';
+import { addToQueue, addToWatched, checkup } from './localeStorage'
+import { renderPagination } from './paginator';
 
 const BASEimgURL = 'https://image.tmdb.org/t/p/';
 const SIZE = 'w500';
 const layout__list = document.querySelector('.layout__list');
-//////console.log(layout__list);
 document.addEventListener('DOMContentLoaded', fetchTrendsGallery);
-async function fetchTrendsGallery(e) {
+async function fetchTrendsGallery(e, page = 1) {
   try {
-    const movies = await fetchTrends(1);
+    const { results: movies, total_pages, page: pageFromRequest } = await fetchTrends(page);
     const genres = await fetchGenres();
     const newMovies = movies.map(el => {
       const arr = el.genre_ids.map(genre => {
@@ -21,17 +21,18 @@ async function fetchTrendsGallery(e) {
       return { ...el, genre: arr };
     });
     const gal = renderGallery(newMovies);
-    console.log(gal);
     const items = document.querySelectorAll('.layout__list');
     items.forEach(item => {
       item.addEventListener('click', onMovieClick);
     });
     renderGallery(newMovies);
+    renderPagination(pageFromRequest, total_pages, page => fetchTrendsGallery(null, page));
   } catch (error) {
     console.error(error);
   }
 }
 export default function renderGallery(newMovies) {
+  layout__list.innerHTML = '';
   const markup = newMovies
     .map(movie => {
       return `<li class="layout__item">    
@@ -61,7 +62,7 @@ function onMovieClick(event) {
   // console.log(event.target.dataset.id);
   const movie = fetchById(movie_id).then(data => {
     const modalBlock = document.querySelector('.modal');
-    modalBlock.classList.remove('is-hidden');
+    modalBlock.classList.remove('hidden');
     const main = document.querySelector('main');
     main.classList.add('backdrop');
     modalBlock.innerHTML = renderMovieCard(data);
@@ -78,7 +79,7 @@ function onMovieClick(event) {
       e.preventDefault();
       // buttonAddToQueue.removeEventListener('click', addToQueue);
       // buttonAddToWatched.removeEventListener('click', addToWatched);
-      e.target.parentNode.classList.toggle('is-hidden');
+      e.target.parentNode.classList.toggle('hidden');
       console.log(e.target);
       main.classList.remove('backdrop');
     });
@@ -86,7 +87,7 @@ function onMovieClick(event) {
       if (e.key === 'Escape') {
         // buttonAddToQueue.removeEventListener('click', addToQueue);
         // buttonAddToWatched.removeEventListener('click', addToWatched);
-        closeButton.parentNode.classList.add('is-hidden');
+        closeButton.parentNode.classList.add('hidden');
         main.classList.remove('backdrop');
       }
     });
@@ -96,7 +97,7 @@ function onMovieClick(event) {
       const container = document.querySelector('main');
       if (e.target === container) {
         // const modal = document.querySelector('.modal');
-        closeButton.parentNode.classList.add('is-hidden');
+        closeButton.parentNode.classList.add('hidden');
         main.classList.remove('backdrop');
       }
     });
