@@ -7,11 +7,18 @@
     font-family: Roboto;
     margin-bottom: 20px;
   }
+  &__item:hover {
+    transform: scale(1.1);
+    transition-duration: 250ms;
+
+  }
   &__image {
     object-fit: cover;
     border-radius: 5px;
-  }
+
+  }  
 }
+
 .attribut__list {
   margin-top: 10px;
 }
@@ -31,6 +38,7 @@
   line-height: 1.33;
   color: var(--accent-color);
 }
+
 .attribut__item:not(:last-child) {
   border-right: solid 1px var(--accent-color);
   padding-right: 5px;
