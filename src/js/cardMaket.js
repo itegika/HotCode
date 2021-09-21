@@ -31,19 +31,19 @@ async function fetchTrendsGallery(e, page = 1) {
     console.error(error);
   }
 }
+const defaultImg = "/xJWLN0r3hBFlpQyFzfUHYkh0JeM.jpg";
 export default function renderGallery(newMovies) {
   layout__list.innerHTML = '';
   const markup = newMovies
     .map(movie => {
       return `<li class="layout__item">    
                       <a class="layout__link" href="" data-id="${movie.id}">
-                      <img class="layout__image" src="${BASEimgURL}${SIZE}${
-        movie.poster_path
+                      <img class="layout__image" src="${BASEimgURL}${SIZE}${movie.poster_path? movie.poster_path: defaultImg
       }" alt="${movie.title}" width="" loading="lazy" />
                       </a>                      
                       <ul class="attribut__list">
                           <li class="attribut__item-title">${movie.original_title}</li>
-                          <li class="attribut__item">${movie.genre.map(gen => gen).join(', ')}</li>
+                          <li class="attribut__item">${movie.genre.map(gen => gen).slice(0, 3).join(', ')}</li>
                           <li class="attribut__item">${movie.release_date.slice(0, 4)}</li>
                       </ul>
                   </li>`;
