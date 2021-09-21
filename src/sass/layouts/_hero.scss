@@ -8,10 +8,10 @@
   &:hover,
   &:focus {
     .search-svg {
-      stroke: magenta;
+      stroke: #ff6b01;
     }
     .search-input {
-      border-bottom: 2px solid magenta;
+      border-bottom: 2px solid #ff6b01;
     }
   }
 }
@@ -24,6 +24,7 @@
   width: 20px;
   height: 32px;
   stroke: rgb(154, 160, 160);
+  margin-left: -20px;
 }
 .search-input {
   width: 280px;
@@ -50,6 +51,7 @@
 .submit-btn {
   background-color: transparent;
   border-style: none;
+  fill: transparent;
 }
 .error-text {
   color: rgb(56, 250, 62);
