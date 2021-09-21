@@ -1,6 +1,5 @@
 .search-form {
   display: flex;
-
   position: relative;
   width: 280px;
   margin: 0 auto 22px;
@@ -8,10 +7,19 @@
   &:hover,
   &:focus {
     .search-svg {
-      stroke: magenta;
+      stroke: #ff6b01;
+      transition-duration: 250ms;
+      transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     }
     .search-input {
-      border-bottom: 0.5px solid magenta;
+      border-bottom: 2px solid #ff6b01;
+      transition-duration: 250ms;
+      transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+      &::placeholder {
+        color: #ff6b01;
+        transition-duration: 250ms;
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+      }
     }
   }
 }
@@ -24,6 +32,7 @@
   width: 20px;
   height: 32px;
   stroke: rgb(154, 160, 160);
+  margin-left: -20px;
 }
 .search-input {
   width: 280px;
@@ -50,6 +59,7 @@
 .submit-btn {
   background-color: transparent;
   border-style: none;
+  fill: transparent;
 }
 .error-text {
   color: rgb(56, 250, 62);
@@ -82,6 +92,7 @@
       border-color: transparent;
       background-color: #ff6b01;
     }
+    transition-duration: 250ms;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   }
 }
