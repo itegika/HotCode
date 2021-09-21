@@ -8,30 +8,161 @@
   .arrow-right {
     display: flex;
     padding: 8px;
-    background-color: lightgray;
-    font-size: 24px;
+    width: 40px;
+    height: 40px;
+    background-color: var(--background-secondary);
+    font-size: 12px;
     margin: 0 6px;
+    font-weight: 500;
     cursor: pointer;
-    border: 1px solid gray;
-    border-radius: 4px;
+    border: none;
+    border-radius: 5px;
+    align-items: center;
+    justify-content: center;
     &.disable {
       opacity: 0.5;
       cursor: default;
+   
     }
-  }
+    &:focus,
+      &:hover {
+        background-color: var(--accent-color);
+      }
+    }
+  
   #pagination-num-buttons {
     display: flex;
     > div {
+      width: 40px;
+      height: 40px;
+      font-weight: 500;
       display: flex;
       padding: 8px;
-      background-color: lightgray;
+      background-color: transparent;
       font-size: 16px;
       margin: 0 6px;
       cursor: pointer;
-      border: 1px solid gray;
-      border-radius: 4px;
+      border: none;
+      border-radius: 5px;
+      align-items: center;
+      justify-content: center;
+      &:focus,
+      &:hover {
+        background-color: rgb(197, 5, 5);
+      }
       &.active {
-        background-color: coral;
+        background-color: var(--accent-color);
+      }
+    }
+  }
+}
+@media screen and (max-width: 767px) {
+  .paginator {
+    
+    display: flex;
+    margin-top: 50px;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+    .arrow-left,
+    .arrow-right {
+      width: 32px;
+      height: 32px;
+      display: flex;
+      padding: 8px;
+      background-color: var(--background-secondary);
+      font-size: 12px;
+      margin: 0 2px;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+      &.disable {
+        opacity: 0.5;
+        cursor: default;
+     
+      }
+      &:focus,
+        &:hover {
+          background-color: var(--accent-color);
+        }
+      }
+    
+    #pagination-num-buttons {
+      display: flex;
+      > div {
+        width: 32px;
+        height: 32px;
+        display: flex;
+        padding: 8px;
+        background-color: transparent;
+        font-size: 12px;
+        margin: 0 2px;
+        cursor: pointer;
+        border: none;
+        align-items: center;
+        justify-content: center;
+        &:focus,
+        &:hover {
+          background-color: rgb(197, 5, 5);
+        }
+        &.active {
+          background-color: var(--accent-color);
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 1200px) {
+  .paginator {
+    font-weight: 500;
+    display: flex;
+    margin-top: 50px;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+    .arrow-left,
+    .arrow-right {
+      width: 32px;
+      height: 32px;
+      display: flex;
+      padding: 8px;
+      background-color: var(--background-secondary);
+      font-size: 12px;
+      margin: 0 2px;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+      &.disable {
+        opacity: 0.5;
+        cursor: default;
+     
+      }
+      &:focus,
+        &:hover {
+          background-color: var(--accent-color);
+        }
+      }
+    
+    #pagination-num-buttons {
+      display: flex;
+      > div {
+        width: 32px;
+        height: 32px;
+        display: flex;
+        padding: 8px;
+        background-color: transparent;
+        font-size: 12px;
+        margin: 0 2px;
+        cursor: pointer;
+        border: none;
+        border-radius: 5px;
+        &:focus,
+        &:hover {
+          background-color: rgb(197, 5, 5);
+        }
+        &.active {
+          background-color: var(--accent-color);
+        }
       }
     }
   }
