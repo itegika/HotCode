@@ -62,7 +62,7 @@ function onMovieClick(event) {
   // console.log(event.target.dataset.id);
   const movie = fetchById(movie_id).then(data => {
     const modalBlock = document.querySelector('.modal');
-    modalBlock.classList.remove('is-hidden');
+    modalBlock.classList.remove('hidden');
     const main = document.querySelector('main');
     main.classList.add('backdrop');
 
@@ -76,7 +76,7 @@ function onMovieClick(event) {
       e.preventDefault();
       // buttonAddToQueue.removeEventListener('click', addToQueue);
       // buttonAddToWatched.removeEventListener('click', addToWatched);
-      e.target.parentNode.classList.toggle('is-hidden');
+      e.target.parentNode.classList.toggle('hidden');
       console.log(e.target);
       main.classList.remove('backdrop');
     });
@@ -84,7 +84,7 @@ function onMovieClick(event) {
       if (e.key === 'Escape') {
         // buttonAddToQueue.removeEventListener('click', addToQueue);
         // buttonAddToWatched.removeEventListener('click', addToWatched);
-        closeButton.parentNode.classList.add('is-hidden');
+        closeButton.parentNode.classList.add('hidden');
         main.classList.remove('backdrop');
       }
     });
@@ -94,7 +94,7 @@ function onMovieClick(event) {
       const container = document.querySelector('main');
       if (e.target === container) {
         // const modal = document.querySelector('.modal');
-        closeButton.parentNode.classList.add('is-hidden');
+        closeButton.parentNode.classList.add('hidden');
         main.classList.remove('backdrop');
       }
     });

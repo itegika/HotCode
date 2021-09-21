@@ -5,6 +5,7 @@
   left: 50%;
   transform: translate(-50%);
   overflow: auto;
+  z-index: 1000;
 }
 main {
   background-color: transparent;
