@@ -77,7 +77,7 @@ pagination.innerHTML = "";
                       </a>                      
                       <ul class="attribut__list">
                           <li class="attribut__item-title">${data.original_title}</li>
-             <li class="attribut__item">${data.genres.map((gen => gen.name)).join(', ')}</li>
+             <li class="attribut__item">${data.genres.map(gen => gen.name).slice(0, 3).join(', ')}</li>
                           <li class="attribut__item">${data.release_date.slice(0, 4)}</li>
                           <li class="attribut__item rating__value">${data.vote_average}</li>
                       </ul>
@@ -110,7 +110,7 @@ const layout__list = document.querySelector('.layout__list');
                       </a>                      
                       <ul class="attribut__list">
                           <li class="attribut__item-title">${data.original_title}</li>
-             <li class="attribut__item">${data.genres.map((gen => gen.name)).join(', ')}</li>
+             <li class="attribut__item">${data.genres.map(gen => gen.name).slice(0, 3).join(', ')}</li>
                           <li class="attribut__item">${data.release_date.slice(0, 4)}</li>
                           <li class="attribut__item rating__value">${data.vote_average}</li>
                       </ul>
