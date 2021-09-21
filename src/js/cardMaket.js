@@ -8,17 +8,10 @@ import { renderPagination } from './paginator';
 const BASEimgURL = 'https://image.tmdb.org/t/p/';
 const SIZE = 'w500';
 const layout__list = document.querySelector('.layout__list');
-//////console.log(layout__list);
 document.addEventListener('DOMContentLoaded', fetchTrendsGallery);
-<<<<<<< HEAD
 async function fetchTrendsGallery(e, page = 1) {
   try {
     const { results: movies, total_pages, page: pageFromRequest } = await fetchTrends(page);
-=======
-async function fetchTrendsGallery(e) {
-  try {
-    const movies = await fetchTrends(1);
->>>>>>> b8bef3f843ceb7ccaff5c318136b823d15a199ac
     const genres = await fetchGenres();
     const newMovies = movies.map(el => {
       const arr = el.genre_ids.map(genre => {
@@ -28,10 +21,6 @@ async function fetchTrendsGallery(e) {
       return { ...el, genre: arr };
     });
     const gal = renderGallery(newMovies);
-<<<<<<< HEAD
-=======
-    console.log(gal);
->>>>>>> b8bef3f843ceb7ccaff5c318136b823d15a199ac
     const items = document.querySelectorAll('.layout__list');
     items.forEach(item => {
       item.addEventListener('click', onMovieClick);
