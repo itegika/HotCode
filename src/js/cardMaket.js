@@ -2,7 +2,7 @@ import { fetchById } from './apiItems';
 import { fetchGenres } from './apiItems';
 import { fetchTrends } from './apiItems';
 import { renderMovieCard } from './modal';
-import { addToQueue, addToWatched } from './localeStorage';
+import { addToQueue, addToWatched, checkup } from './localeStorage';
 
 const BASEimgURL = 'https://image.tmdb.org/t/p/';
 const SIZE = 'w500';
@@ -56,7 +56,7 @@ export default function renderGallery(newMovies) {
 function onMovieClick(event) {
   event.preventDefault();
   const movie_id =
-    event.target.nodeName === 'IMG' ? event.target.parentNode.dataset.id : event.target.dataset.id;
+  event.target.nodeName === 'IMG' ? event.target.parentNode.dataset.id : event.target.dataset.id;
   // console.log(event.target.parentNode.dataset.id);
   // console.log(event.target.dataset.id);
   const movie = fetchById(movie_id).then(data => {
@@ -64,10 +64,13 @@ function onMovieClick(event) {
     modalBlock.classList.remove('is-hidden');
     const main = document.querySelector('main');
     main.classList.add('backdrop');
-
     modalBlock.innerHTML = renderMovieCard(data);
+    const watchedArr = JSON.parse(localStorage.getItem("watchedArr"));
+    const queueArr = JSON.parse(localStorage.getItem("queuedArr"));
     const buttonAddToWatched = modalBlock.querySelector('.watched__button');
     const buttonAddToQueue = modalBlock.querySelector('.queve__button');
+    if(checkup({movie_id,}))
+    
     buttonAddToWatched.addEventListener('click', addToWatched);
     buttonAddToQueue.addEventListener('click', addToQueue);
     const closeButton = modalBlock.querySelector('.close__modal');

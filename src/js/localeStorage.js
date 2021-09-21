@@ -2,7 +2,7 @@ import renderGallery from './cardMaket';
 import { fetchById } from './apiItems';
 import Notiflix from "notiflix";
 import {onMovieClick} from "./cardMaket"
-// localStorage.clear();
+localStorage.clear();
 if (!localStorage.getItem("watchedArr")) {
   localStorage.setItem("watchedArr", "[]");
 }
@@ -29,29 +29,19 @@ export function addToWatched() {
     } 
   }
 export function addToQueue() {
-    const title = document.querySelector(".modal__title");
-  const img = document.querySelector(".modal__img");
-  const genre = document.querySelector(".modal__description-list").children[3];
-  const popularity = document.querySelector(".modal__description-list").children[1];
-  const description = document.querySelector(".modal__about-text");
+
     const imgLink = document.querySelector(".modal__img-link");
   // console.log(title.textContent, img.src, genre.textContent, popularity.textContent, description.textContent);
-  const film = {
-    title: title.textContent,
-    img: img.src,
-    genre: genre.textContent,
-    popularity: popularity.textContent,
-    description: description.textContent,
-        id: imgLink.dataset.id,
-
-  };
+  // const film = {
+  const id = imgLink.dataset.id;
+  // };
   const queueArr = Array.from(JSON.parse(localStorage.getItem("queueArr")));
   // console.log(queueArr);
-  if (checkup(film,queueArr)) {
+  if (checkup({id},queueArr)) {
    Notiflix.Notify.failure("Error, film is already in Queue");
     return;
   } else {
-    queueArr.push(film);
+    queueArr.push({id});
     console.log(queueArr);
     localStorage.setItem("queueArr", JSON.stringify(queueArr));
     Notiflix.Notify.success("Film have been added to Queue");
@@ -114,11 +104,10 @@ const layout__list = document.querySelector('.layout__list');
   return layout__list;
 }
 
-function checkup(film, filmsArr) {
+export function checkup(film, filmsArr) {
   let status = false;
   for (let i = 0; i < filmsArr.length; i++) {
     if (filmsArr[i].id === film.id) {
-      
       status = true;
       return status;
     }
