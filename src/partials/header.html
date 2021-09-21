@@ -4,28 +4,28 @@
             <li class="logged-out">
               <a href="#" class="logout" id="logout">Logout</a>
             </li>
-            <li class="logged-in">
+            <li class="logged-in slideInDown">
               <a href="#modal-login" class="login" data-target="modal-login">Login</a>
             </li>
-            <li class="signup">
+            <li class="signup slideInLeft">
               <a href="#modal-signup" class="signUp" data-target="modal-signup">Sign up</a>
             </li>
           </ul>
-  <div class="navigation__container container">
+  <div class="navigation__container slideInDown container">
     <a href="./index.html" class="logo">
       <svg class="logo__svg icon-film">
         <use href="./images/icons.svg#film"></use>
       </svg>
-      <span class= "film">Filmoteka</span>
+      <span class= "film slideInLeft">Filmoteka</span>
     </a>
     <nav class="navigation">
       <ul class="menu list">
-        <li class="menu__item">
-          <a href="./index.html" class="link current menu__link menu__link-home"
+        <li class="menu__item slideInRight">
+          <a href="./index.html" class="link current menu__link menu__link-home "
             >HOME</a
           >
         </li>
-        <li class="menu__item">
+        <li class="menu__item slideInDown">
           <a href="#" class="link menu__link menu__link-library"
             >MY LIBRARY</a
           >
@@ -37,19 +37,21 @@
     </div>
     </div>
     <!-- SIGN UP MODAL -->
-    <div id="modal-signup" class="modal hidden ">
+    <div id="modal-signup" class="modal hidden window-border">
       <div class="modal-content">
-        <h4>Sign up</h4><br />
-        <form id="signup-form">
+        <!-- <h4>Sign up</h4><br /> -->
+        <form id="signup-form" class="signup-form">
           <div class="input-field">
             
-            <label for="signup-email">Email address<input type="email" name="email" id="signup-email" required placeholder="" class="user-input"/></label>
+            <label for="signup-email">Email: <input type="email" name="email" id="signup-email" required placeholder="" class="user-input"/></label>
           </div>
           <div class="input-field">
             
-            <label for="signup-password">Choose password<input type="password" name="password" id="signup-password" required minlength="8" placeholder="" class="user-input"/></label>
+            <label for="signup-password">Password: <input type="password" name="password" id="signup-password" required minlength="8" placeholder="" class="user-input"/></label>
           </div>
-          <button class="btn yellow darken-2 z-depth-0">Sign up</button>
+          <div class="btn-auth">
+          <button class="signupBtn">Sign up</button>
+          </div>
         </form>
       </div>
     </div>
