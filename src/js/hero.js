@@ -20,7 +20,7 @@ async function fetchQuery(query, page = 1) {
     const request = await axios.get(
       `${URL}/search/movie?api_key=${KEY}&query=${query}&page=${page}`,
     );
-    refs.layout__list.innerHTML = '';
+    setTimeout(clearErrorMsg,3000);
     refs.error__text.innerHTML = `Good job, we found ${request.data.total_results} movies on this tag.`;
     if (request.data.results.length === 0) {
       refs.error__text.innerHTML = `<span style="color:red;">Search result not successful. Enter the correct movie name and try again.</span>`;
