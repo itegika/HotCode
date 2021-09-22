@@ -14,8 +14,17 @@ const myLibrary = {
 myLibrary.libraryBtns.classList.add('hidden');
 myLibrary.library.addEventListener('click', onClick);
 function onClick(e) {
-  // console.log(e.target)
+  
   e.target.classList.add('current');
+  actionsWithLibraryRender();
+  if (myLibrary.library.classList.contains('current')) {
+    body.classList.replace('home-bcg', 'library-bcg');
+    myLibrary.form.classList.add('hidden');
+    myLibrary.libraryBtns.classList.remove('hidden');
+    myLibrary.home.classList.remove('current');
+  }
+}
+function actionsWithLibraryRender() {
   const buttonWatched = document.querySelector('.watched');
   const buttonQueue = document.querySelector('.queue');
   const watchedArr = JSON.parse(localStorage.getItem('watchedArr'));
@@ -41,11 +50,9 @@ function onClick(e) {
       buttonWatched.classList.add('current');
       renderWatched();
     } else if (watchedArr.length !== 0 && queueArr.length === 0) {
-      // buttonQueue.disabled = "true";
       buttonWatched.classList.add('current');
       renderWatched();
     } else if (watchedArr.length === 0 && queueArr.length !== 0) {
-      // buttonWatched.disabled = "true";
       buttonQueue.classList.add('current');
       renderQueue();
     }
@@ -59,11 +66,23 @@ function onClick(e) {
       if (document.querySelector('.error-container')) {
         document.querySelector('.error-container').remove();
       }
+      if (!document.querySelector('.arehidden')) {
+        const image = document.querySelector('.background-image');
+        image.classList.remove('arehidden');
+        image.classList.add('arehidden');
+      }
       renderWatched();
     } else {
       if (document.querySelector('.error-container')) {
         document.querySelector('.error-container').remove();
       }
+      if (document.querySelector('.arehidden')){
+        const image = document.querySelector('.background-image');
+        image.classList.add('arehidden');
+        image.classList.remove('arehidden');
+      }
+      const image = document.querySelector('.background-image');
+      image.classList.remove('arehidden');
       const layout__list = document.querySelector('.layout__list');
       const pagination = document.querySelector('#pagination');
       layout__list.innerHTML = '';
@@ -85,16 +104,23 @@ function onClick(e) {
       if (document.querySelector('.error-container')) {
         document.querySelector('.error-container').remove();
       }
+      if (!document.querySelector('.arehidden')) {
+        const image = document.querySelector('.background-image');
+        image.classList.remove('arehidden');
+        image.classList.add('arehidden');
+      }
       renderQueue();
     } else {
       if (document.querySelector('.error-container')) {
         document.querySelector('.error-container').remove();
       }
-      console.log(image);
-
+      if (document.querySelector('.arehidden')){
+        const image = document.querySelector('.background-image');
+        image.classList.add('arehidden');
+        image.classList.remove('arehidden');
+      }
       const layout__list = document.querySelector('.layout__list');
       const pagination = document.querySelector('#pagination');
-
       layout__list.innerHTML = '';
       pagination.innerHTML = '';
       document
@@ -106,10 +132,4 @@ function onClick(e) {
       Notiflix.Notify.failure('Queue is empty');
     }
   });
-  if (myLibrary.library.classList.contains('current')) {
-    body.classList.replace('home-bcg', 'library-bcg');
-    myLibrary.form.classList.add('hidden');
-    myLibrary.libraryBtns.classList.remove('hidden');
-    myLibrary.home.classList.remove('current');
-  }
 }
