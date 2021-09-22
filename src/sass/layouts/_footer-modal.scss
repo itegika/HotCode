@@ -1,69 +1,68 @@
 @media screen and (max-width: 767px) {
-.footer__modal {
-  position: absolute;
-  background: #fff;
-  bottom: 414vh;
-  // overflow: hidden;
-  transform: translate(-50%);
-  z-index: 1000;
-}
-.footer__backdrop {
-  position: fixed;
-  top: 0;
-  left: -19px;
-  width: 265px;
-  height: auto;
-  z-index: 100;
-  // overflow: scroll;
-  // background-color: #fff;
-  padding:0px;
-  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  pointer-events: none;
-}
-.students-list {
-  padding-top: 15px;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  max-width: 320px;
-  width: auto;
-  flex-wrap: wrap;
-  margin-left: -40px;
-  margin-bottom: -40px;
-  flex-basis: calc((100% - 30px) / 3);
-  justify-content: center;
-  background-color: white;
-}
-.student-item {
-  margin-right: 5px;
-  margin-left: 5px;
-  font-size: 15px;
-  font-weight: 500;
-  line-height: 1.18;
-  margin-left: 40px;
-  margin-bottom: 40px;
-}
-.student__name {
- margin-top: 5px;
- margin-bottom: 15px;
-}
-.student__linktoGH {
-
-}
-.student__img {
-  width: 150px;
-}
-
-.footer__modal-btn {
-  border: none;
-  background-color: transparent;
-  color: #545454;
-  text-decoration: underline;
+  .footer__modal {
+    position: absolute;
+    background: #fff;
+    bottom: 414vh;
+    // overflow: hidden;
+    transform: translate(-50%);
+    z-index: 1000;
   }
-.footer__modal-btn:hover {
-  color: var(--accent-color);
-}
+  .footer__backdrop {
+    position: fixed;
+    top: 0;
+    left: -19px;
+    width: 265px;
+    height: auto;
+    z-index: 100;
+    // overflow: scroll;
+    // background-color: #fff;
+    padding: 0px;
+    transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
+      visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+  }
+  .students-list {
+    padding-top: 15px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    max-width: 320px;
+    width: auto;
+    flex-wrap: wrap;
+    margin-left: -40px;
+    margin-bottom: -40px;
+    flex-basis: calc((100% - 30px) / 3);
+    justify-content: center;
+    background-color: white;
+  }
+  .student-item {
+    margin-right: 5px;
+    margin-left: 5px;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.18;
+    margin-left: 40px;
+    margin-bottom: 40px;
+  }
+  .student__name {
+    margin-top: 5px;
+    margin-bottom: 15px;
+  }
+  .student__linktoGH {
+  }
+  .student__img {
+    width: 150px;
+  }
+
+  .footer__modal-btn {
+    border: none;
+    background-color: transparent;
+    color: #545454;
+    text-decoration: underline;
+  }
+  .footer__modal-btn:hover {
+    color: var(--accent-color);
+  }
 }
 @media screen and (min-width: 768px) and (max-width: 1023px) {
   .footer__modal {
@@ -83,7 +82,7 @@
     z-index: 100;
     // overflow: scroll;
     // background-color: #fff;
-    padding:15px;
+    padding: 15px;
     transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
       visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
     pointer-events: none;
@@ -109,22 +108,21 @@
     margin-bottom: 40px;
   }
   .student__name {
-   margin-top: 5px;
-   margin-bottom: 15px;
+    margin-top: 5px;
+    margin-bottom: 15px;
   }
   .student__linktoGH {
-  
   }
   .student__img {
     width: 150px;
   }
-  
+
   .footer__modal-btn {
     border: none;
     background-color: transparent;
     color: #545454;
     text-decoration: underline;
-    }
+  }
   .footer__modal-btn:hover {
     color: var(--accent-color);
   }
@@ -133,7 +131,7 @@
   .footer__modal {
     position: absolute;
     background: #fff;
-    bottom: 128vh;
+    bottom: 95vh;
     // overflow: hidden;
     transform: translate(-50%);
     z-index: 1000;
@@ -147,7 +145,7 @@
     z-index: 100;
     // overflow: scroll;
     // background-color: #fff;
-    padding:15px;
+    padding: 15px;
     transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
       visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
     pointer-events: none;
@@ -173,24 +171,22 @@
     margin-bottom: 40px;
   }
   .student__name {
-   margin-top: 5px;
-   margin-bottom: 15px;
+    margin-top: 5px;
+    margin-bottom: 15px;
   }
   .student__linktoGH {
-  
   }
   .student__img {
     width: 150px;
   }
-  
+
   .footer__modal-btn {
     border: none;
     background-color: transparent;
     color: #545454;
     text-decoration: underline;
-    }
+  }
   .footer__modal-btn:hover {
     color: var(--accent-color);
   }
-
 }
