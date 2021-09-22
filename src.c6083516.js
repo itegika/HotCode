@@ -127,4 +127,4 @@ const o=document.body;document.body.onload=function(){setTimeout(function(){cons
 },{}],"Focm":[function(require,module,exports) {
 "use strict";require("./sass/main.scss"),require("./js/apiItems");var r=e(require("./js/hero"));function e(r){return r&&r.__esModule?r:{default:r}}require("./js/switchHome-Library"),require("./js/paginator"),require("./js/authorisation"),require("./js/spinner");
 },{"./sass/main.scss":"clu1","./js/apiItems":"SCfy","./js/hero":"l9pR","./js/switchHome-Library":"rvCm","./js/paginator":"d4Ms","./js/authorisation":"dyW2","./js/spinner":"Sc1o"}]},{},["Focm"], null)
-//# sourceMappingURL=/HotCode/src.651bd5fb.js.map
+//# sourceMappingURL=/HotCode/src.c6083516.js.map
