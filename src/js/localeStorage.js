@@ -1,7 +1,7 @@
 import renderGallery from './cardMaket';
 import { fetchById } from './apiItems';
 import Notiflix from "notiflix";
-import { onMovieClick } from "./cardMaket"
+import { onMovieClick } from "./cardMaket";
 // import { renderPagination } from './paginator';
 
 // localStorage.clear(); 
@@ -61,10 +61,10 @@ export function queueActions() {
 
 export function renderWatched() {
   const BASEimgURL ='https://image.tmdb.org/t/p/'
-const SIZE = 'w500'
+  const SIZE = 'w500'
   const layout__list = document.querySelector('.layout__list');
   const pagination = document.querySelector("#pagination");
-pagination.innerHTML = "";
+  pagination.innerHTML = "";
   layout__list.innerHTML = "";
   const arr = JSON.parse(localStorage.getItem("watchedArr"));
   console.log(arr);
@@ -95,9 +95,11 @@ pagination.innerHTML = "";
 
 
 export function renderQueue() {
-   const BASEimgURL ='https://image.tmdb.org/t/p/'
-const SIZE = 'w500'
-const layout__list = document.querySelector('.layout__list');
+  const BASEimgURL ='https://image.tmdb.org/t/p/'
+  const SIZE = 'w500'
+  const layout__list = document.querySelector('.layout__list');
+  const pagination = document.querySelector("#pagination");
+  pagination.innerHTML = "";
   layout__list.innerHTML = "";
   const arr = JSON.parse(localStorage.getItem("queueArr"));
   console.log(arr);

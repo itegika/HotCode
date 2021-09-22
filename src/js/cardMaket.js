@@ -2,7 +2,7 @@ import { fetchById } from './apiItems';
 import { fetchGenres } from './apiItems';
 import { fetchTrends } from './apiItems';
 import { renderMovieCard } from './modal';
-import { watchedActions, queueActions, checkup,removeFromQueue,removeFromWatched } from './localeStorage'
+import { watchedActions, queueActions, checkup, removeFromQueue, removeFromWatched } from './localeStorage';
 import { renderPagination } from './paginator';
 
 const BASEimgURL = 'https://image.tmdb.org/t/p/';
