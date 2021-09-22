@@ -121,7 +121,17 @@ main {
   line-height: 1.25;
   color: var(--main-color);
 }
-
+.error-container {
+  padding-top: 30px;
+}
+.error__message {
+  text-align: center;
+  font-family: Roboto;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 1.25;
+  color: var(--main-color);
+}
 .button {
   padding: 15px 2px;
   border-radius: 5px;
@@ -140,11 +150,19 @@ main {
 
 .watched__button:hover,
 .watched__button:focus,
-.remove__from__watched,
-.remove__from__queue {
+.watched__button.remove__watched,
+.queve__button.remove__queue {
   color: var(--white-color);
   background-color: var(--accent-color);
   border: none;
+}
+.watched__button.remove__watched:hover,
+.watched__button.remove__watched:focus,
+.queve__button.remove__queue:hover,
+.queve__button.remove__queue:focus {
+  color: var(--main-color);
+  border: 1px solid var(--main-color);
+  background-color: var(--white-color);
 }
 .queve__button:hover,
 .queve__button:focus {
@@ -291,7 +309,8 @@ main {
     height: 44px;
   }
 
-  .watched__button {
+  .watched__button,
+  .remove__watched {
     margin-right: 15px;
   }
 }
