@@ -43,6 +43,20 @@ signUpBtn.addEventListener('click', onSignUpBtnClick);
 function onSignUpBtnClick() {
   signUpModal.classList.remove('hidden');
 }
+// закрытие модалок вне сабмита-------------------------
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'Escape') {
+    signUpModal.classList.add('hidden');
+    logInModal.classList.add('hidden');
+  }
+});
+document.addEventListener('click', function (e) {
+  const container = document.querySelector('main');
+  if (e.target === container) {
+    signUpModal.classList.add('hidden');
+    logInModal.classList.add('hidden');
+  }
+});
 
 signUpForm.addEventListener('submit', e => {
   e.preventDefault();
