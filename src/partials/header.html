@@ -2,13 +2,13 @@
 <header class="header container">
   <ul id="auth-btns" class="auth-buttons">
             <li class="logged-out">
-              <button class="logout login-btn" id="logout">Logout</button>
+              <button  type="button" class="logout login-btn" id="logout">Logout</button>
             </li>
             <li class="logged-in slideInDown">
-              <button class="login login-btn" data-target="modal-login">Login</button>
+              <button type="button"class="login login-btn" data-target="modal-login">Login</button>
             </li>
             <li class="signup slideInLeft">
-              <button class="signUp signUp-btn" data-target="modal-signup">Sign up</button>          
+              <button type="button" class="signUp signUp-btn" data-target="modal-signup">Sign up</button>          
             </li>
           </ul>
   <div class="navigation__container slideInDown container">
@@ -63,11 +63,11 @@
           <form id="login-form" class="login-form" >
             <div class="input-field">
              
-              <label for="login-email">Email: <input type="email" id="login-email" required placeholder="" class="user-input"/></label>
+              <label for="login-email">Email: <input type="email" name = "email" id="login-email" required placeholder="" class="user-input"/></label>
             </div>
             <div class="input-field">
               
-              <label for="login-password">Password: <input type="password" id="login-password" required minlength="8" placeholder="" class="user-input"/></label>
+              <label for="login-password">Password: <input type="password" name= "password" id="login-password" required minlength="8" placeholder="" class="user-input"/></label>
             </div>
             <div class="btn-auth">
               <button class="logInBtn">Login</button>
