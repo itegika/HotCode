@@ -21,17 +21,17 @@ const auth = getAuth();
 
 // рефсы--------------------------------------
 const signUpBtn = document.querySelector('.signUp');
-console.log(signUpBtn);
+// console.log(signUpBtn);
 const logOutBtn = document.querySelector('.logout');
-console.log(logOutBtn);
+// console.log(logOutBtn);
 const signUpForm = document.querySelector('#signup-form');
 const signUpModal = document.querySelector('#modal-signup');
-console.log(signUpModal);
-console.log(signUpForm);
+// console.log(signUpModal);
+// console.log(signUpForm);
 const logInForm = document.querySelector('#login-form');
-console.log(logInForm);
+// console.log(logInForm);
 const logInBtn = document.querySelector('.login');
-console.log(logInBtn);
+// console.log(logInBtn);
 const logInModal = document.querySelector('#modal-login');
 
 // ------------дефолтные значения
@@ -140,9 +140,9 @@ function checkUserStatus() {
       logInBtn.disabled = true;
       logOutBtn.disabled = false;
 
-      console.log(
-        `Current user: ${userName}, user email: ${email}, user password: ${pass}, userId: ${uid}`,
-      );
+      // console.log(
+      //   `Current user: ${userName}, user email: ${email}, user password: ${pass}, userId: ${uid}`,
+      // );
       // getUserData(uid);
     } else {
       // User is signed out.
@@ -152,36 +152,3 @@ function checkUserStatus() {
     }
   });
 }
-
-// function getUserData(userId) {
-//   return firebase
-//     .database(app)
-//     .ref('/users/' + userId)
-//     .once('value');
-// }
-// function saveUserData(userId, name, email) {
-//   firebase
-//     .database(app)
-//     .ref('users/' + userId)
-//     .set(
-//       {
-//         username: name,
-//         email: email,
-//       },
-//       error => {
-//         if (error) {
-//           console.log('Failed!');
-//         } else {
-//           console.log('User data saved successfully!');
-//         }
-//       },
-//     );
-// }
-
-// function checkUserId() {
-//   const userId = users.uid;
-//   return firebase
-//     .database(app)
-//     .ref('/users/' + userId)
-//     .once('value');
-// }
