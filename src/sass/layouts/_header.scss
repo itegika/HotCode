@@ -22,15 +22,16 @@
     font-size: 31px;
   }
 }
-.login-btn,  .signUp-btn {
-font-weight: 500;
-font-size: 10px;
-line-height: 1.16;
-text-transform: uppercase;
-border: none;
-color: inherit;
-background-color: transparent;
-} 
+.login-btn,
+.signUp-btn {
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 1.16;
+  text-transform: uppercase;
+  border: none;
+  color: inherit;
+  background-color: transparent;
+}
 .login-btn:hover::after,
 .signUp-btn:hover::after {
   content: '';
@@ -93,43 +94,6 @@ background-color: transparent;
   width: 29px;
   height: 29px;
   align-self: center;
-  @keyframes heartFadeInOut {
-    0% {
-      transform: scale(1);
-    }
-    25% {
-      transform: scale(0.97);
-    }
-    35% {
-      transform: scale(0.9);
-    }
-    45% {
-      transform: scale(1.1);
-    }
-    55% {
-      transform: scale(0.9);
-    }
-    65% {
-      transform: scale(1.1);
-    }
-    75% {
-      transform: scale(1.03);
-    }
-    100% {
-      transform: scale(1);
-    }
-  }
-
-  & {
-    animation-name: heartFadeInOut;
-    animation-iteration-count: infinite;
-    animation-duration: 1000ms;
-  }
-
-  &:hover,
-  &:focus {
-    animation-play-state: paused;
-  }
 }
 
 @media screen and (max-width: 479px) {
