@@ -1,47 +1,196 @@
+@media screen and (max-width: 768px) {
 .footer__modal {
-  position: fixed;
-  background: #fff;
-  top: 50px;
-  left: 50%;
-  transform: translate(-50%);
-}
-
-.close__footer-modal {
   position: absolute;
-  top: 15px;
-  right: 15px;
-  font-size: 24px;
-  appearance: none;
-  box-shadow: none;
-  outline: none;
+  background: #fff;
+  bottom: 414vh;
+  // overflow: hidden;
+  transform: translate(-50%);
+  z-index: 1000;
+}
+.footer__backdrop {
+  position: fixed;
+  top: 0;
+  left: -19px;
+  width: 265px;
+  height: auto;
+  z-index: 100;
+  // overflow: scroll;
+  // background-color: #fff;
+  padding:0px;
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+.students-list {
+  padding-top: 15px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  max-width: 320px;
+  width: auto;
+  flex-wrap: wrap;
+  margin-left: -40px;
+  margin-bottom: -40px;
+  flex-basis: calc((100% - 30px) / 3);
+  justify-content: center;
+  background-color: white;
+}
+.student-item {
+  margin-right: 5px;
+  margin-left: 5px;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.18;
+  margin-left: 40px;
+  margin-bottom: 40px;
+}
+.student__name {
+ margin-top: 5px;
+ margin-bottom: 15px;
+}
+.student__linktoGH {
+
+}
+.student__img {
+  width: 150px;
+}
+
+.footer__modal-btn {
   border: none;
-  background: none;
-  cursor: pointer;
-}
-
-// .footer__row {
-//   margin: 0 -15px;
-//   box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.2);
-// }
-
-.is-hidd {
-  display: none;
-}
-
-@media screen and (max-width: 767px) {
-  .footer__modal {
-    width: 280px;
+  background-color: transparent;
+  color: #545454;
+  text-decoration: underline;
   }
+.footer__modal-btn:hover {
+  color: var(--accent-color);
 }
-
+}
 @media screen and (min-width: 768px) and (max-width: 1023px) {
   .footer__modal {
-    width: 618px;
+    position: absolute;
+    background: #fff;
+    bottom: 128vh;
+    // overflow: hidden;
+    transform: translate(-50%);
+    z-index: 1000;
+  }
+  .footer__backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 960px;
+    height: auto;
+    z-index: 100;
+    // overflow: scroll;
+    // background-color: #fff;
+    padding:15px;
+    transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
+      visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+  }
+  .students-list {
+    padding-top: 15px;
+    display: flex;
+    width: auto;
+    flex-wrap: wrap;
+    margin-left: -40px;
+    margin-bottom: -40px;
+    flex-basis: calc((100% - 30px) / 3);
+    justify-content: center;
+    background-color: white;
+  }
+  .student-item {
+    margin-right: 5px;
+    margin-left: 5px;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.18;
+    margin-left: 40px;
+    margin-bottom: 40px;
+  }
+  .student__name {
+   margin-top: 5px;
+   margin-bottom: 15px;
+  }
+  .student__linktoGH {
+  
+  }
+  .student__img {
+    width: 150px;
+  }
+  
+  .footer__modal-btn {
+    border: none;
+    background-color: transparent;
+    color: #545454;
+    text-decoration: underline;
+    }
+  .footer__modal-btn:hover {
+    color: var(--accent-color);
   }
 }
-
 @media screen and (min-width: 1024px) {
   .footer__modal {
-    width: 882px;
+    position: absolute;
+    background: #fff;
+    bottom: 128vh;
+    // overflow: hidden;
+    transform: translate(-50%);
+    z-index: 1000;
   }
+  .footer__backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 960px;
+    height: auto;
+    z-index: 100;
+    // overflow: scroll;
+    // background-color: #fff;
+    padding:15px;
+    transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
+      visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+  }
+  .students-list {
+    padding-top: 15px;
+    display: flex;
+    width: auto;
+    flex-wrap: wrap;
+    margin-left: -40px;
+    margin-bottom: -40px;
+    flex-basis: calc((100% - 30px) / 3);
+    justify-content: center;
+    background-color: white;
+  }
+  .student-item {
+    margin-right: 5px;
+    margin-left: 5px;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.18;
+    margin-left: 40px;
+    margin-bottom: 40px;
+  }
+  .student__name {
+   margin-top: 5px;
+   margin-bottom: 15px;
+  }
+  .student__linktoGH {
+  
+  }
+  .student__img {
+    width: 150px;
+  }
+  
+  .footer__modal-btn {
+    border: none;
+    background-color: transparent;
+    color: #545454;
+    text-decoration: underline;
+    }
+  .footer__modal-btn:hover {
+    color: var(--accent-color);
+  }
+
 }

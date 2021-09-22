@@ -1,13 +1,13 @@
 .footer {
   width: 100%;
   bottom: 0;
-  position: absolute;
+  position: relative;
   text-align: center;
   background-color: var(--background-secondary);
   padding-left: 48px;
   padding-right: 36px;
   min-width: 320px;
-
+  flex: 0 0 150px;
   @media screen and (max-width: 767px) {
     padding-top: 29px;
     padding-bottom: 30px;
