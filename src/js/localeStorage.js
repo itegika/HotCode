@@ -2,9 +2,7 @@ import renderGallery from './cardMaket';
 import { fetchById } from './apiItems';
 import Notiflix from "notiflix";
 import { onMovieClick } from "./cardMaket";
-// import { renderPagination } from './paginator';
 
-// localStorage.clear(); 
 if (!localStorage.getItem("watchedArr")) {
   localStorage.setItem("watchedArr", "[]");
 }
@@ -25,12 +23,12 @@ export function watchedActions() {
         localStorage.setItem("watchedArr", JSON.stringify(watchedFilmArr));
         Notiflix.Notify.success("Film have been added to watched");
     buttonWatched.classList.add("remove__watched");
-    // buttonWatched.classList.remove("watched__button");
+    
     buttonWatched.textContent = "Added to watched";
   } else {
     removeFromWatched();
     buttonWatched.classList.remove("remove__watched");
-    // buttonWatched.classList.add("watched__button");
+    
     buttonWatched.textContent = "Add to watched";
   }
 }
@@ -48,12 +46,12 @@ export function queueActions() {
     localStorage.setItem("queueArr", JSON.stringify(queueArr));
     Notiflix.Notify.success("Film have been added to Queue");
     buttonQueue.classList.add("remove__queue");
-    // buttonQueue.classList.remove("queve__button");
+    
     buttonQueue.textContent = "Added to Queue";
   } else {
     removeFromQueue();
     buttonQueue.classList.remove("remove__queue");
-    // buttonQueue.classList.add("queve__button");
+    
     buttonQueue.textContent = "Add to Queue";
   }   
 }

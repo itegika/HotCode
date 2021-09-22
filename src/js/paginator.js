@@ -109,7 +109,7 @@ export function renderPagination(page, totalPages = 50, callback) {
     } else {
       arrowLeft.classList.remove('disable');
     }
-  
+
     if (pagination.current === pagination.total) {
       arrowRight.classList.add('disable');
     } else {
@@ -120,32 +120,9 @@ export function renderPagination(page, totalPages = 50, callback) {
   arrowRight.onclick = onArrowRightClick;
   disableArrowBtn();
   setupPagination();
-  if ( pagination.total <= 1 ) {
-  paginationElement.innerHTML = ''
-  arrowLeft.classList.add('hidden')
-  arrowRight.classList.add('hidden')
+  if (pagination.total <= 1) {
+    paginationElement.innerHTML = '';
+    arrowLeft.classList.add('hidden');
+    arrowRight.classList.add('hidden');
+  }
 }
- 
-}
-
-// прячет первую и последнюю страницу по бокам для мобильных гаджетов с маленьким экраном
-// function hideExtremeButtons(totalPages) {
-//   try {
-//     if (/Android|webOS|iPhone|iPad|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-//       // код для мобильных устройств
-//       const allPaginationBtns = document.querySelectorAll('#pagination button');
-//       if (currentPage > 3) {
-//         allPaginationBtns[0].classList.add('hide');
-//       } else {
-//         allPaginationBtns[0].classList.remove('hide');
-//       }
-
-//       if (currentPage < totalPages - 3) {
-//         allPaginationBtns[allPaginationBtns.length - 1].classList.add('hide');
-//       } else {
-//         allPaginationBtns[allPaginationBtns.length - 1].classList.remove('hide');
-//       }
-//     }
-//   } catch (error) {}
-// }
-// делает неактивными кнопки-стрелки на первой и последней  странице

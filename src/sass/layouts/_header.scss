@@ -89,18 +89,18 @@
     display: flex;
     margin-left: 524px;
   }
-}
-.auth-buttons {
-  position: absolute;
-  left: 45px;
-  top: 20px;
-  display: flex;
-  justify-content: space-between;
-  list-style-type: none;
-  width: 150px;
-  font-size: 20px;
-  line-height: 1.16;
-  margin-left: auto;
+  .auth-buttons {
+    position: absolute;
+    left: 45px;
+    top: 20px;
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+    width: 150px;
+    font-size: 20px;
+    line-height: 1.16;
+    margin-left: auto;
+  }
 }
 
 .navigation__container {

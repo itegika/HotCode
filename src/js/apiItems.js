@@ -13,11 +13,11 @@ export async function fetchGenres() {
     const genres = await res.data.genres;
     // console.log(genres);
     setTimeout(function () {
-      const preloader = document.getElementById("page-preloader");
-      if (!preloader.classList.contains("done")) {
-          preloader.classList.add("done");
+      const preloader = document.getElementById('page-preloader');
+      if (!preloader.classList.contains('done')) {
+        preloader.classList.add('done');
       }
-  }, 1000);
+    }, 1000);
     return genres;
   } catch (error) {
     console.error(error);
@@ -33,40 +33,3 @@ export async function fetchById(movie_id) {
   }
 }
 fetchById(296777);
-// <<<<<<< modalfix
-
-// function onMovieClick(event) {
-
-//   event.preventDefault();
-//   const movie_id = event.target.nodeName === "IMG" ? event.target.parentNode.dataset.id : event.target.dataset.id;
-//   // console.log(event.target.parentNode.dataset.id);
-//   // console.log(event.target.dataset.id);
-//   const movie = fetchById(movie_id).then(data => {
-//   const modalBlock = document.querySelector('.modal');
-//   modalBlock.classList.remove('is-hidden');
-//   const main = document.querySelector("main");
-//   main.classList.add("backdrop");
-
-//   modalBlock.innerHTML = renderMovieCard(data);
-//   const closeButton = modalBlock.querySelector('.close__modal');
-//   closeButton.addEventListener('click', e=> {
-//     e.preventDefault();
-
-//     e.target.parentNode.classList.toggle('is-hidden');
-//     console.log(e.target);
-//     main.classList.remove("backdrop");
-
-//   })
-//   document.addEventListener('keydown', function(e) {
-//     if (e.key === 'Escape') {
-//       closeButton.parentNode.classList.toggle('is-hidden');
-//       main.classList.remove("backdrop");
-//     }
-//     });
-//   });
-//   // console.log(movie);
-
-//   return movie;
-// }
-// =======
-// >>>>>>> dev
