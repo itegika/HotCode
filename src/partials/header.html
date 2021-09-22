@@ -1,0 +1,80 @@
+
+<header class="header container">
+  <ul id="auth-btns" class="auth-buttons">
+            <li class="logged-out">
+              <button  type="button" class="logout login-btn" id="logout">Logout</button>
+            </li>
+            <li class="logged-in slideInDown">
+              <button type="button"class="login login-btn" data-target="modal-login">Login</button>
+            </li>
+            <li class="signup slideInLeft">
+              <button type="button" class="signUp signUp-btn" data-target="modal-signup">Sign up</button>          
+            </li>
+          </ul>
+  <div class="navigation__container slideInDown container">
+    <a href="./index.html" class="logo">
+      <svg class="logo__svg icon-film">
+        <use href="./images/icons.svg#film"></use>
+      </svg>
+      <span class= "film slideInLeft">Filmoteka</span>
+    </a>
+    <nav class="navigation">
+      <ul class="menu list">
+        <li class="menu__item slideInRight">
+          <a href="./index.html" class="link current menu__link menu__link-home "
+            >HOME</a
+          >
+        </li>
+        <li class="menu__item slideInDown">
+          <a href="#" class="link menu__link menu__link-library"
+            >MY LIBRARY</a
+          >
+        </li>
+      </ul>
+    </nav>
+  </div>
+          
+    </div>
+    </div>
+    <!-- SIGN UP MODAL -->
+    <div id="modal-signup" class="modal hidden window-border">
+      <div class="modal-content">
+        <!-- <h4>Sign up</h4><br /> -->
+        <form id="signup-form" class="signup-form">
+          <div class="input-field">
+            
+            <label for="signup-email">Email: <input type="email" name="email" id="signup-email" required placeholder="" class="user-input"/></label>
+          </div>
+          <div class="input-field">
+            
+            <label for="signup-password">Password: <input type="password" name="password" id="signup-password" required minlength="8" placeholder="" class="user-input"/></label>
+          </div>
+          <div class="btn-auth">
+          <button class="signupBtn">Sign up</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+      <!-- LOGIN MODAL -->
+      <div id="modal-login" class="modal hidden window-border">
+        <div class="modal-content">
+          <!-- <h4>Login</h4><br /> -->
+          <form id="login-form" class="login-form" >
+            <div class="input-field">
+             
+              <label for="login-email" class="label-length">Email: <input type="email" name = "email" id="login-email" required placeholder="" class="user-input"/></label>
+            </div>
+            <div class="input-field">
+              
+              <label for="login-password" class="label-length">Password: <input type="password" name= "password" id="login-password" required minlength="8" placeholder="" class="user-input"/></label>
+            </div>
+            <div class="btn-auth">
+              <button class="logInBtn">Login</button>
+
+            </div>
+          </form>
+        </div>
+      </div>
+  </header>
+

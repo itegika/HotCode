@@ -1,0 +1,135 @@
+.layout {
+  margin-top: 117px;
+  margin-bottom: 50px;
+  &__item {
+    margin-left: 5px;
+    margin-right: 5px;
+    font-family: Roboto;
+    margin-bottom: 20px;
+  }
+  &__item:hover {
+    transform: scale(1.1);
+    transition-duration: 250ms;
+  }
+  &__image {
+    object-fit: cover;
+    border-radius: 5px;
+  }
+}
+.slideInUp {
+  -webkit-animation-name: slideInUp;
+  animation-name: slideInUp;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+@-webkit-keyframes slideInUp {
+  0% {
+    -webkit-transform: translateY(100%);
+    transform: translateY(100%);
+    visibility: visible;
+  }
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+@keyframes slideInUp {
+  0% {
+    -webkit-transform: translateY(100%);
+    transform: translateY(100%);
+    visibility: visible;
+  }
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+
+.attribut__list {
+  margin-top: 10px;
+}
+.attribut__item-title {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.16;
+  text-transform: uppercase;
+  color: var(--main-color);
+  display: flex;
+  flex-wrap: wrap;
+}
+.attribut__item {
+  display: inline-block;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  color: var(--accent-color);
+}
+
+.attribut__item:not(:last-child) {
+  border-right: solid 1px var(--accent-color);
+  padding-right: 5px;
+}
+.attribut__item.rating__value {
+  display: inline;
+  padding: 1px 9px;
+  background-color: var(--accent-color);
+  border-radius: 5px;
+  color: var(--white-color);
+}
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .layout {
+    margin-top: 157px;
+
+    &__list {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      flex-basis: calc((100% - 60px) / 2);
+      margin-left: -30px;
+      margin-bottom: -30px;
+    }
+    &__item {
+      margin: 0px 0px 30px 30px;
+    }
+    &__image {
+      width: 293px;
+      height: 439px;
+    }
+  }
+  .attribut__item-title {
+    max-width: 293px;
+  }
+  .attribut__item {
+    max-width: 293px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .layout {
+    margin-top: 157px;
+    &__list {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      flex-basis: calc((100% - 30px) / 3);
+      margin-left: -30px;
+      margin-bottom: -30px;
+    }
+    &__item {
+      margin: 0px 0px 30px 30px;
+    }
+    &__image {
+      width: 274px;
+      height: 398px;
+    }
+  }
+  .attribut__item-title {
+    line-height: 1.33;
+    max-width: 274px;
+  }
+  .attribut__item {
+    max-width: 274px;
+  }
+}

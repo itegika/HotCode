@@ -1,0 +1,130 @@
+.search-form {
+  display: flex;
+  position: relative;
+  width: 280px;
+  margin: 0 auto 22px;
+  justify-content: center;
+  &:hover,
+  &:focus {
+    .search-svg {
+      stroke: #ff6b01;
+      transition-duration: 250ms;
+      transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .search-input {
+      border-bottom: 2px solid #ff6b01;
+      transition-duration: 250ms;
+      transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+      &::placeholder {
+        color: #ff6b01;
+        transition-duration: 250ms;
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+      }
+    }
+  }
+}
+.search-container {
+  // width: 100%;
+  margin-top: 35px;
+  flex-direction: column;
+}
+.search-svg {
+  width: 20px;
+  height: 32px;
+  stroke: rgb(154, 160, 160);
+  margin-left: -20px;
+}
+.search-input {
+  width: 280px;
+  height: 30px;
+  padding: 4px 0;
+
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  border-bottom: 0.5px solid color #fff;
+  outline: none;
+
+  background-color: inherit;
+
+  color: #fff;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.17;
+
+  &::placeholder {
+    color: #fff;
+  }
+}
+.submit-btn {
+  cursor: pointer;
+  background-color: transparent;
+  border-style: none;
+  fill: transparent;
+}
+.error-text {
+  color: rgb(56, 250, 62);
+  position: absolute;
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+.error-div {
+  justify-content: center;
+  align-items: center;
+  display: block;
+}
+.libraryBtns {
+  display: flex;
+  justify-content: space-between;
+  width: 290px;
+  margin: 45px auto;
+  & > button {
+    cursor: pointer;
+    background-color: transparent;
+    color: white;
+    border-radius: 5px;
+    text-transform: uppercase;
+    border: 1px white solid;
+    width: 136px;
+    height: 44px;
+    &:hover,
+    &:focus,
+    &.current {
+      border-color: transparent;
+      background-color: #ff6b01;
+    }
+    transition-duration: 250ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+      .slideInDown {
+  -webkit-animation-name: slideInDown;
+  animation-name: slideInDown;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  }
+  @-webkit-keyframes slideInDown {
+  0% {
+  -webkit-transform: translateY(-100%);
+  transform: translateY(-100%);
+  visibility: visible;
+  }
+  100% {
+  -webkit-transform: translateY(0);
+  transform: translateY(0);
+  }
+  }
+  @keyframes slideInDown {
+  0% {
+  -webkit-transform: translateY(-100%);
+  transform: translateY(-100%);
+  visibility: visible;
+  }
+  100% {
+  -webkit-transform: translateY(0);
+  transform: translateY(0);
+  }
+  } 
