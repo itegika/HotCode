@@ -11,7 +11,6 @@ const refs = {
   form: document.querySelector('#search-form'),
   layout__list: document.querySelector('.layout__list'),
   error__text: document.querySelector('.error-text'),
-
 };
 
 let query = '';
@@ -21,11 +20,13 @@ export async function fetchQuery(query, page = 1) {
     const request = await axios.get(
       `${URL}/search/movie?api_key=${KEY}&query=${query}&page=${page}`,
     );
-    setTimeout(clearErrorMsg,3000);
+    setTimeout(clearErrorMsg, 3000);
+
     refs.error__text.innerHTML = `Good job, we found ${request.data.total_results} movies on this tag.`;
     if (request.data.results.length === 0) {
       refs.error__text.innerHTML = `<span style="color:red;">Search result not successful. Enter the correct movie name and try again.</span>`;
     }
+
     return request.data;
   } catch (error) {}
 }
@@ -38,7 +39,17 @@ const searchInput = async e => {
   e.preventDefault();
   query = e.target.elements.searchQuery.value.trim();
   refreshList(query);
+  spin();
 };
+function spin() {
+  let preloader = document.getElementById('page-preloader');
+  preloader.classList.remove('done');
+  setTimeout(function () {
+    if (!preloader.classList.contains('done')) {
+      preloader.classList.add('done');
+    }
+  }, 500);
+}
 
 const refreshList = async (query, page) => {
   const { results: movies, total_pages, page: pageFromRequest } = await fetchQuery(query, page);
@@ -49,6 +60,7 @@ const refreshList = async (query, page) => {
     });
     return { ...el, genre: arr };
   });
+
   renderGallery(newMovies);
   renderPagination(pageFromRequest, total_pages, page => refreshList(query, page));
 };

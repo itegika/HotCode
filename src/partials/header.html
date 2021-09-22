@@ -4,28 +4,30 @@
             <li class="logged-out">
               <button class="logout button" id="logout">Logout</button>
             </li>
-            <li class="logged-in">
-              <button class="login button" data-target="modal-login">Login<button>
+
+            <li class="logged-in slideInDown">
+              <a href="#modal-login" class="login" data-target="modal-login">Login</a>
             </li>
-            <li class="signup">
-              <button class="signUp button" data-target="modal-signup">Sign up<button>
+            <li class="signup slideInLeft">
+              <a href="#modal-signup" class="signUp" data-target="modal-signup">Sign up</a>
+              
             </li>
           </ul>
-  <div class="navigation__container container">
+  <div class="navigation__container slideInDown container">
     <a href="./index.html" class="logo">
       <svg class="logo__svg icon-film">
         <use href="./images/icons.svg#film"></use>
       </svg>
-      <span class= "film">Filmoteka</span>
+      <span class= "film slideInLeft">Filmoteka</span>
     </a>
     <nav class="navigation">
       <ul class="menu list">
-        <li class="menu__item">
-          <a href="./index.html" class="link current menu__link menu__link-home"
+        <li class="menu__item slideInRight">
+          <a href="./index.html" class="link current menu__link menu__link-home "
             >HOME</a
           >
         </li>
-        <li class="menu__item">
+        <li class="menu__item slideInDown">
           <a href="#" class="link menu__link menu__link-library"
             >MY LIBRARY</a
           >

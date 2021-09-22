@@ -24,7 +24,7 @@
   }
 }
 .search-container {
-  width: 100%;
+  // width: 100%;
   margin-top: 35px;
   flex-direction: column;
 }
@@ -57,6 +57,7 @@
   }
 }
 .submit-btn {
+  cursor: pointer;
   background-color: transparent;
   border-style: none;
   fill: transparent;
@@ -79,6 +80,7 @@
   width: 290px;
   margin: 45px auto;
   & > button {
+    cursor: pointer;
     background-color: transparent;
     color: white;
     border-radius: 5px;
@@ -96,3 +98,33 @@
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   }
 }
+      .slideInDown {
+  -webkit-animation-name: slideInDown;
+  animation-name: slideInDown;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  }
+  @-webkit-keyframes slideInDown {
+  0% {
+  -webkit-transform: translateY(-100%);
+  transform: translateY(-100%);
+  visibility: visible;
+  }
+  100% {
+  -webkit-transform: translateY(0);
+  transform: translateY(0);
+  }
+  }
+  @keyframes slideInDown {
+  0% {
+  -webkit-transform: translateY(-100%);
+  transform: translateY(-100%);
+  visibility: visible;
+  }
+  100% {
+  -webkit-transform: translateY(0);
+  transform: translateY(0);
+  }
+  } 
