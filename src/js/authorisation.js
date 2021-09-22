@@ -27,22 +27,36 @@ console.log(logOutBtn);
 const signUpForm = document.querySelector('#signup-form');
 const signUpModal = document.querySelector('#modal-signup');
 console.log(signUpModal);
-onsole.log(signUpForm);
+console.log(signUpForm);
 const logInForm = document.querySelector('#login-form');
 console.log(logInForm);
-const logInBtn = document.querySelector('.loginBtn');
-
+const logInBtn = document.querySelector('.login');
+console.log(logInBtn);
 const logInModal = document.querySelector('#modal-login');
 
 // ------------дефолтные значения
-// logOutBtn.classList.add('hidden');
-logOutBtn.disabled = true;
+logOutBtn.classList.add('hidden');
+// logOutBtn.disabled = true;
 
 // регистрация------------------------
 signUpBtn.addEventListener('click', onSignUpBtnClick);
 function onSignUpBtnClick() {
   signUpModal.classList.remove('hidden');
 }
+// закрытие модалок вне сабмита-------------------------
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'Escape') {
+    signUpModal.classList.add('hidden');
+    logInModal.classList.add('hidden');
+  }
+});
+document.addEventListener('click', function (e) {
+  const container = document.querySelector('main');
+  if (e.target === container) {
+    signUpModal.classList.add('hidden');
+    logInModal.classList.add('hidden');
+  }
+});
 
 signUpForm.addEventListener('submit', e => {
   e.preventDefault();
@@ -75,14 +89,17 @@ function onLogInBtnClick() {
 logInForm.addEventListener('submit', e => {
   e.preventDefault();
   const email = logInForm.elements.email.value;
+  console.log(email);
   const password = logInForm.elements.password.value;
   signInWithEmailAndPassword(auth, email, password)
     .then(userCredential => {
       const user = userCredential.user.uid;
       localStorage.setItem('email', password);
       console.log(email, password, user);
-      logOutBtn.disabled = false;
-      logInBtn.disabled = true;
+      logOutBtn.classList.remove('hidden');
+      // logInBtn.disabled = true;
+      logInBtn.classList.add('hidden');
+      signUpBtn.classList.add('hidden');
       logInModal.classList.add('hidden');
       logInForm.reset();
       // заменить на функцию закрытия
@@ -96,21 +113,15 @@ logInForm.addEventListener('submit', e => {
       alert(errorMessage);
     });
 });
-// -------------logout
 
-// console.log(logOutBtn);
-// function signOut() {
-//   user = undefined;
-//   localStorage.removeItem('email');
-// }
-
-// function isLogIn() {
-//   return user !== undefined;
-// }
 // логаут----------------------------------
 logOutBtn.addEventListener('click', e => {
   e.preventDefault();
-  signOut().then(() => {
+  auth.signOut().then(() => {
+    localStorage.removeItem('email');
+    logOutBtn.classList.add('hidden');
+    logInBtn.classList.remove('hidden');
+    signUpBtn.classList.remove('hidden');
     console.log('user signed out');
   });
 });
@@ -136,8 +147,8 @@ function checkUserStatus() {
     } else {
       // User is signed out.
       // logOutBtn.classList.add('hidden');
-      logOutBtn.disabled = true;
-      logInBtn.disabled = false;
+      // logOutBtn.disabled = true;
+      // logInBtn.disabled = false;
     }
   });
 }

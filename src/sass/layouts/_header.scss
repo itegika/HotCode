@@ -22,18 +22,40 @@
     font-size: 31px;
   }
 }
-.login-btn,  .signUp-btn {
-font-weight: 500;
-font-size: 12px;
-line-height: 1.16;
-text-transform: uppercase;
-border: none;
-font: inherit;
-color: inherit;
-background-color: transparent;
+.login-btn,
+.signUp-btn {
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 1.16;
+  text-transform: uppercase;
+  border: none;
+  color: inherit;
+  background-color: transparent;
 }
-
-
+.login-btn:hover::after,
+.signUp-btn:hover::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -7%;
+  background-color: var(--accent-color);
+  width: 100%;
+  height: 3px;
+  border-radius: 2px;
+}
+@media screen and (min-width: 320px) {
+  .auth-buttons {
+    position: absolute;
+    top: 20px;
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+    width: 25%;
+    font-size: 12px;
+    line-height: 1.16;
+    margin-left: auto;
+  }
+}
 @media screen and (max-width: 767px) {
   .film {
     display: none;
@@ -51,12 +73,35 @@ background-color: transparent;
     display: flex;
     margin-left: 303px;
   }
+  .auth-buttons {
+    position: absolute;
+    top: 20px;
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+    width: 150px;
+    font-size: 12px;
+    line-height: 1.16;
+    margin-left: auto;
+  }
 }
 @media screen and (min-width: 1024px) {
   .menu {
     display: flex;
     margin-left: 524px;
   }
+}
+.auth-buttons {
+  position: absolute;
+  left: 45px;
+  top: 20px;
+  display: flex;
+  justify-content: space-between;
+  list-style-type: none;
+  width: 150px;
+  font-size: 20px;
+  line-height: 1.16;
+  margin-left: auto;
 }
 
 .navigation__container {
@@ -84,43 +129,6 @@ background-color: transparent;
   width: 29px;
   height: 29px;
   align-self: center;
-  @keyframes heartFadeInOut {
-    0% {
-      transform: scale(1);
-    }
-    25% {
-      transform: scale(0.97);
-    }
-    35% {
-      transform: scale(0.9);
-    }
-    45% {
-      transform: scale(1.1);
-    }
-    55% {
-      transform: scale(0.9);
-    }
-    65% {
-      transform: scale(1.1);
-    }
-    75% {
-      transform: scale(1.03);
-    }
-    100% {
-      transform: scale(1);
-    }
-  }
-
-  & {
-    animation-name: heartFadeInOut;
-    animation-iteration-count: infinite;
-    animation-duration: 1000ms;
-  }
-
-  &:hover,
-  &:focus {
-    animation-play-state: paused;
-  }
 }
 
 @media screen and (max-width: 479px) {
@@ -172,30 +180,6 @@ background-color: transparent;
 }
 .hide-after::after {
   display: none;
-}
-
-.auth-buttons {
-  position: absolute;
-  left: 45px;
-  top: 20px;
-  display: flex;
-  justify-content: space-between;
-  list-style-type: none;
-  width: 150px;
-  font-size: 12px;
-  line-height: 1.16;
-  margin-left: auto;
-
-  // &:after {
-  //   content: '';
-  //   position: absolute;
-  //   left: 0;
-  //   bottom: -15%;
-  //   width: 100%;
-  //   height: 2px;
-  //   border-radius: 1px;
-  //   background-color: rgb(154, 160, 160);
-  // }
 }
 
 .auth-buttons a {
