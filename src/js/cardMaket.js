@@ -15,7 +15,7 @@ const BASEimgURL = 'https://image.tmdb.org/t/p/';
 const SIZE = 'w500';
 const layout__list = document.querySelector('.layout__list');
 document.addEventListener('DOMContentLoaded', fetchTrendsGallery);
-async function fetchTrendsGallery(e, page = 1) {
+export async function fetchTrendsGallery(e, page = 1) {
   try {
     const { results: movies, total_pages, page: pageFromRequest } = await fetchTrends(page);
     const genres = await fetchGenres();
