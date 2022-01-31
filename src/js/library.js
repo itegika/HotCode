@@ -30,6 +30,7 @@ export function actionsWithLibraryRender() {
       renderWatched();
     } else {
       Notiflix.Notify.failure('Watched is empty');
+      layout__list.innerHTML = '';
     }
   });
 
@@ -40,6 +41,7 @@ export function actionsWithLibraryRender() {
       renderQueue();
     } else {
       Notiflix.Notify.failure('Queue is empty');
+      layout__list.innerHTML = '';
     }
   });
 }
