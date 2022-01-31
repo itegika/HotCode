@@ -1,10 +1,16 @@
-import firebase from 'firebase/app';
-import { initializeApp } from 'firebase/app';
-import { getAnalytics } from 'firebase/analytics';
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
-import { signInWithEmailAndPassword } from 'firebase/auth';
-import { onAuthStateChanged } from 'firebase/auth';
+import firebase, { initializeApp } from 'firebase/app';
+// import { initializeApp } from 'firebase/app';
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  onAuthStateChanged,
+} from 'firebase/auth';
 import 'firebase/database';
+import { getDatabase, ref, set, onValue, get, child } from 'firebase/database';
+import { accessHome } from './switchHome-Library';
+import './apiItems.js';
+import { Notify } from 'notiflix';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyB9BkppnXfaYDAiVi6RvUMDrBOu1m_umL8',
@@ -14,32 +20,30 @@ const firebaseConfig = {
   messagingSenderId: '719459605405',
   appId: '1:719459605405:web:bab6bcd703170bdc726d74',
   measurementId: 'G-8XB3KBGM25',
+  databaseURL: 'https://hotcode-76a51-default-rtdb.europe-west1.firebasedatabase.app',
 };
 
 const app = initializeApp(firebaseConfig);
-const auth = getAuth();
+const auth = getAuth(app);
+const db = getDatabase();
 
 // рефсы--------------------------------------
 const signUpBtn = document.querySelector('.signUp');
-// console.log(signUpBtn);
 const logOutBtn = document.querySelector('.logout');
-// console.log(logOutBtn);
 const signUpForm = document.querySelector('#signup-form');
 const signUpModal = document.querySelector('#modal-signup');
-// console.log(signUpModal);
-// console.log(signUpForm);
 const logInForm = document.querySelector('#login-form');
-// console.log(logInForm);
 const logInBtn = document.querySelector('.login');
-// console.log(logInBtn);
 const logInModal = document.querySelector('#modal-login');
+
+document.addEventListener('DOMContentLoaded', checkUserStatus);
 
 // ------------дефолтные значения
 logOutBtn.classList.add('hidden');
-// logOutBtn.disabled = true;
 
 // регистрация------------------------
 signUpBtn.addEventListener('click', onSignUpBtnClick);
+
 function onSignUpBtnClick() {
   signUpModal.classList.remove('hidden');
 }
@@ -62,20 +66,22 @@ signUpForm.addEventListener('submit', e => {
   e.preventDefault();
   const email = signUpForm.elements.email.value;
   const password = signUpForm.elements.password.value;
+
   createUserWithEmailAndPassword(auth, email, password)
     .then(userCredential => {
-      const user = userCredential.user.uid;
-      alert('registration successfull. Pls, confirm your email');
+      const userId = userCredential.user.uid;
+      const email = userCredential.user.email;
+      const name = userCredential.user.displayName;
+      Notify.info('Registration successfull. Pls, log in');
       signUpForm.reset();
       signUpModal.classList.add('hidden');
-      // saveUserData();
+      saveUserData(userId, name, email);
       // сделать закрытие модалки вместо hidden
     })
     .catch(error => {
-      const errorCode = error.code;
-      console.log(errorCode);
-      const errorMessage = error.message;
-      console.log(errorMessage);
+      if (error.code === 'auth/email-already-in-use') {
+        return Notify.failure('E-mail already in use. Try something else');
+      }
     });
 });
 
@@ -89,28 +95,24 @@ function onLogInBtnClick() {
 logInForm.addEventListener('submit', e => {
   e.preventDefault();
   const email = logInForm.elements.email.value;
-  console.log(email);
   const password = logInForm.elements.password.value;
+
   signInWithEmailAndPassword(auth, email, password)
     .then(userCredential => {
       const user = userCredential.user.uid;
       localStorage.setItem('email', password);
-      console.log(email, password, user);
       logOutBtn.classList.remove('hidden');
-      // logInBtn.disabled = true;
+      Notify.success('Welcome to the HotCode Filmoteka!');
       logInBtn.classList.add('hidden');
       signUpBtn.classList.add('hidden');
       logInModal.classList.add('hidden');
       logInForm.reset();
+      getUserData(user);
       // заменить на функцию закрытия
     })
     .catch(error => {
       const errorCode = error.code;
-      console.log(errorCode);
-      alert(errorCode);
-      const errorMessage = error.message;
-      console.log(errorMessage);
-      alert(errorMessage);
+      Notify.failure(`${errorCode}`);
     });
 });
 
@@ -122,33 +124,44 @@ logOutBtn.addEventListener('click', e => {
     logOutBtn.classList.add('hidden');
     logInBtn.classList.remove('hidden');
     signUpBtn.classList.remove('hidden');
-    console.log('user signed out');
+    accessHome();
+    localStorage.clear();
   });
 });
 
 // изменение статуса пользователя-----------------
 function checkUserStatus() {
   onAuthStateChanged(auth, user => {
-    if (user) {
-      // User is signed in.
-      const userName = user.displayName;
-      const email = user.email;
-      const pass = user.password;
+    if (user && localStorage.getItem('email')) {
       const uid = user.uid;
 
-      // logOutBtn.classList.remove('hidden');
-      logInBtn.disabled = true;
-      logOutBtn.disabled = false;
-
-      // console.log(
-      //   `Current user: ${userName}, user email: ${email}, user password: ${pass}, userId: ${uid}`,
-      // );
-      // getUserData(uid);
+      logOutBtn.classList.remove('hidden');
+      logInBtn.classList.add('hidden');
+      signUpBtn.classList.add('hidden');
+      getUserData(uid);
     } else {
-      // User is signed out.
-      // logOutBtn.classList.add('hidden');
-      // logOutBtn.disabled = true;
-      // logInBtn.disabled = false;
+      return;
     }
   });
+}
+
+function saveUserData(userId, name, email) {
+  set(ref(db, 'users/' + userId), {
+    username: name,
+    email: email,
+  });
+}
+
+function getUserData(user) {
+  const userId = auth.currentUser.uid;
+  return onValue(
+    ref(db, '/users/' + userId),
+    snapshot => {
+      const data = snapshot.val() && snapshot.val().email;
+      console.log(data);
+    },
+    {
+      onlyOnce: true,
+    },
+  );
 }
