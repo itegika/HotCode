@@ -153,8 +153,7 @@
   display: block;
   white-space: nowrap;
 }
-.menu__link:hover::after,
-.menu__link:focus::after {
+.menu__link:hover::after {
   content: '';
   position: absolute;
   left: 0;
